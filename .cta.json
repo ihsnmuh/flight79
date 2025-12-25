@@ -1,9 +1,9 @@
 {
-  "projectName": "flight79",
+  "projectName": "website",
   "mode": "file-router",
   "typescript": true,
   "tailwind": true,
-  "packageManager": "pnpm",
+  "packageManager": "bun",
   "addOnOptions": {
     "prisma": {
       "database": "postgres"
@@ -16,9 +16,10 @@
     "biome",
     "nitro",
     "start",
-    "prisma",
+    "strapi",
+    "shadcn",
     "storybook",
     "tanstack-query",
-    "shadcn"
+    "prisma"
   ]
 }

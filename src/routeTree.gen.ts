@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
+import { Route as DemoStrapiRouteImport } from './routes/demo/strapi'
 import { Route as DemoStorybookRouteImport } from './routes/demo/storybook'
 import { Route as DemoPrismaRouteImport } from './routes/demo/prisma'
+import { Route as DemoStrapiArticleIdRouteImport } from './routes/demo/strapi_.$articleId'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiTqTodosRouteImport } from './routes/demo/api.tq-todos'
@@ -32,6 +34,11 @@ const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
   path: '/demo/tanstack-query',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoStrapiRoute = DemoStrapiRouteImport.update({
+  id: '/demo/strapi',
+  path: '/demo/strapi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DemoStorybookRoute = DemoStorybookRouteImport.update({
   id: '/demo/storybook',
   path: '/demo/storybook',
@@ -40,6 +47,11 @@ const DemoStorybookRoute = DemoStorybookRouteImport.update({
 const DemoPrismaRoute = DemoPrismaRouteImport.update({
   id: '/demo/prisma',
   path: '/demo/prisma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoStrapiArticleIdRoute = DemoStrapiArticleIdRouteImport.update({
+  id: '/demo/strapi_/$articleId',
+  path: '/demo/strapi/$articleId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
@@ -87,11 +99,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo/prisma': typeof DemoPrismaRoute
   '/demo/storybook': typeof DemoStorybookRoute
+  '/demo/strapi': typeof DemoStrapiRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/demo/strapi/$articleId': typeof DemoStrapiArticleIdRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -101,11 +115,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo/prisma': typeof DemoPrismaRoute
   '/demo/storybook': typeof DemoStorybookRoute
+  '/demo/strapi': typeof DemoStrapiRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/demo/strapi/$articleId': typeof DemoStrapiArticleIdRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -116,11 +132,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/demo/prisma': typeof DemoPrismaRoute
   '/demo/storybook': typeof DemoStorybookRoute
+  '/demo/strapi': typeof DemoStrapiRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/demo/strapi_/$articleId': typeof DemoStrapiArticleIdRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -132,11 +150,13 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/prisma'
     | '/demo/storybook'
+    | '/demo/strapi'
     | '/demo/tanstack-query'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/demo/strapi/$articleId'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -146,11 +166,13 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/prisma'
     | '/demo/storybook'
+    | '/demo/strapi'
     | '/demo/tanstack-query'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/demo/strapi/$articleId'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -160,11 +182,13 @@ export interface FileRouteTypes {
     | '/'
     | '/demo/prisma'
     | '/demo/storybook'
+    | '/demo/strapi'
     | '/demo/tanstack-query'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/demo/strapi_/$articleId'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -175,11 +199,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DemoPrismaRoute: typeof DemoPrismaRoute
   DemoStorybookRoute: typeof DemoStorybookRoute
+  DemoStrapiRoute: typeof DemoStrapiRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoApiTqTodosRoute: typeof DemoApiTqTodosRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
+  DemoStrapiArticleIdRoute: typeof DemoStrapiArticleIdRoute
   DemoStartSsrDataOnlyRoute: typeof DemoStartSsrDataOnlyRoute
   DemoStartSsrFullSsrRoute: typeof DemoStartSsrFullSsrRoute
   DemoStartSsrSpaModeRoute: typeof DemoStartSsrSpaModeRoute
@@ -202,6 +228,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoTanstackQueryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo/strapi': {
+      id: '/demo/strapi'
+      path: '/demo/strapi'
+      fullPath: '/demo/strapi'
+      preLoaderRoute: typeof DemoStrapiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/demo/storybook': {
       id: '/demo/storybook'
       path: '/demo/storybook'
@@ -214,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/demo/prisma'
       fullPath: '/demo/prisma'
       preLoaderRoute: typeof DemoPrismaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/strapi_/$articleId': {
+      id: '/demo/strapi_/$articleId'
+      path: '/demo/strapi/$articleId'
+      fullPath: '/demo/strapi/$articleId'
+      preLoaderRoute: typeof DemoStrapiArticleIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/start/server-funcs': {
@@ -279,11 +319,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DemoPrismaRoute: DemoPrismaRoute,
   DemoStorybookRoute: DemoStorybookRoute,
+  DemoStrapiRoute: DemoStrapiRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoApiTqTodosRoute: DemoApiTqTodosRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
+  DemoStrapiArticleIdRoute: DemoStrapiArticleIdRoute,
   DemoStartSsrDataOnlyRoute: DemoStartSsrDataOnlyRoute,
   DemoStartSsrFullSsrRoute: DemoStartSsrFullSsrRoute,
   DemoStartSsrSpaModeRoute: DemoStartSsrSpaModeRoute,
