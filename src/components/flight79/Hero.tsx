@@ -14,7 +14,7 @@ export default function Hero({
 	};
 
 	return (
-		<section className="relative h-[650px] flex items-center overflow-hidden">
+		<section className="relative h-[calc(100vh-64px)] flex items-center overflow-hidden">
 			<div className="absolute inset-0 z-0">
 				<img
 					alt="Flight 79 Interior"

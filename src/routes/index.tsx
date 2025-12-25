@@ -40,13 +40,15 @@ export const Route = createFileRoute("/")({
 	component: App,
 });
 
+const SECTION_ID_ABOUT = "about";
+
 function App() {
 	const { isWeekend, isOpen } = Route.useLoaderData();
 
 	return (
 		<div className="flex flex-col min-h-screen">
 			<Hero isWeekend={isWeekend} isOpen={isOpen} />
-			<About />
+			<About id={SECTION_ID_ABOUT} />
 			<Menu />
 			<Reviews />
 			<Blog />
