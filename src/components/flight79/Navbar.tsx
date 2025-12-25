@@ -39,9 +39,14 @@ export default function Navbar() {
 					</div>
 
 					{/* Desktop CTA */}
-					<div className="hidden md:flex items-center gap-4">
-						<Button variant="default">Book Table</Button>
-					</div>
+					{/* <div className="hidden md:flex items-center gap-4">
+						<Button
+							variant="default"
+							className="bg-brand-accent hover:bg-brand-accent/90 text-xs font-bold uppercase tracking-wider"
+						>
+							Book Table
+						</Button>
+					</div> */}
 
 					{/* Mobile Menu Button */}
 					<Button
@@ -69,9 +74,9 @@ export default function Navbar() {
 							{item.label}
 						</a>
 					))}
-					<Button className="bg-brand-accent hover:bg-brand-accent/90 text-xs font-bold uppercase tracking-wider w-full">
+					{/* <Button className="bg-brand-accent hover:bg-brand-accent/90 font-bold uppercase tracking-wider w-full">
 						Book Table
-					</Button>
+					</Button> */}
 				</div>
 			)}
 		</nav>
