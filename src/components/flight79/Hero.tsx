@@ -43,13 +43,11 @@ export default function Hero({
 						craving, from espresso to full meals.
 					</p>
 
-					<div className="flex flex-wrap items-center gap-8 mt-4">
+					<div className="flex flex-wrap items-center gap-4 mt-4">
 						<Button variant="default" size="lg">
 							Reserve Table
 						</Button>
-						<p className="text-white/90 text-lg font-medium hidden md:block">
-							{"|"}
-						</p>
+						<div className="w-px h-8 bg-white/20" />
 						<div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white shadow-sm">
 							<Dotpulse isOpen={isOpen} />
 							<p className="text-sm font-medium text-center">

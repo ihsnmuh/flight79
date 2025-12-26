@@ -44,7 +44,7 @@ export default function About({ id }: AboutProps) {
 	return (
 		<section id={sectionId} className="py-20 bg-white">
 			<div className="max-w-[1280px] mx-auto px-4 sm:px-10">
-				<div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+				<div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
 					<div>
 						<h2 className="text-4xl font-recoleta font-medium mb-3 text-brand-text">
 							Why Flight 79?

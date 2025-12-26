@@ -41,6 +41,12 @@ export const Route = createFileRoute("/")({
 });
 
 const SECTION_ID_ABOUT = "about";
+const SECTION_ID_MENU = "menu";
+const SECTION_ID_REVIEWS = "reviews";
+const SECTION_ID_BLOG = "blog";
+const SECTION_ID_ATMOSPHERE = "atmosphere";
+const SECTION_ID_LOCATION = "location";
+const SECTION_ID_CTA = "cta";
 
 function App() {
 	const { isWeekend, isOpen } = Route.useLoaderData();
@@ -49,12 +55,12 @@ function App() {
 		<div className="flex flex-col min-h-screen">
 			<Hero isWeekend={isWeekend} isOpen={isOpen} />
 			<About id={SECTION_ID_ABOUT} />
-			<Menu />
-			<Reviews />
-			<Blog />
-			<Atmosphere />
-			<Location />
-			<CTA />
+			<Menu id={SECTION_ID_MENU} />
+			<Reviews id={SECTION_ID_REVIEWS} />
+			<Blog id={SECTION_ID_BLOG} />
+			<Atmosphere id={SECTION_ID_ATMOSPHERE} />
+			<Location id={SECTION_ID_LOCATION} />
+			<CTA id={SECTION_ID_CTA} />
 			<Footer />
 		</div>
 	);

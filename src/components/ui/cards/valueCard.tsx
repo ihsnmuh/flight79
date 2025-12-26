@@ -1,7 +1,7 @@
 interface ValueCardProps {
 	title: string;
 	subtitle: string;
-	icon: string;
+	icon: React.ReactNode;
 	image: string;
 }
 
