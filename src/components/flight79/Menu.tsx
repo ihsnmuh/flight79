@@ -69,25 +69,27 @@ export default function Menu({ id }: MenuProps) {
 
 				{/* Menu */}
 				<div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-					{menus.map((menu: IMenu) => (
-						<MenuItem
-							key={menu.title}
-							image={menu.image}
-							title={menu.title}
-							desc={menu.desc}
-							price={menu.price}
-							badge={menu.badge?.name}
-							badgeVariant={menu.badge?.variant}
-						/>
-					))}
+					{menus
+						.filter((menu) => menu.badge.variant === activeTab)
+						.map((menu: IMenu) => (
+							<MenuItem
+								key={menu.title}
+								image={menu.image}
+								title={menu.title}
+								desc={menu.desc}
+								price={menu.price}
+								badge={menu.badge?.name}
+								badgeVariant={menu.badge?.variant}
+							/>
+						))}
 				</div>
 
 				<div className="mt-12 flex flex-col items-center justify-center gap-4 border-t border-gray-200 pt-8">
-					<p className="text-xs font-bold uppercase tracking-widest text-brand-muted">
+					<p className="text-lg font-bold font-recoleta uppercase tracking-widest text-brand-muted">
 						In-Flight Delivery
 					</p>
 					<div className="flex gap-8 grayscale hover:grayscale-0 transition-all opacity-70 hover:opacity-100">
-						<span className="font-black text-xl text-green-600 cursor-pointer">
+						{/* <span className="font-black text-xl text-green-600 cursor-pointer">
 							GoFood
 						</span>
 						<span className="font-black text-xl text-green-500 cursor-pointer">
@@ -95,6 +97,9 @@ export default function Menu({ id }: MenuProps) {
 						</span>
 						<span className="font-black text-xl text-orange-500 cursor-pointer">
 							ShopeeFood
+						</span> */}
+						<span className="font-black text-xl text-orange-500 cursor-pointer">
+							Coming Soon!
 						</span>
 					</div>
 				</div>

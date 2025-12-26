@@ -38,7 +38,7 @@ export const MenuItem = ({
 					{title}
 				</h3>
 				<p className="text-xs text-brand-muted mb-3 line-clamp-2">{desc}</p>
-				<div className="mt-auto hidden group-hover:flex items-center justify-between">
+				{/* <div className="mt-auto hidden group-hover:flex items-center justify-between">
 					<span className="font-bold text-brand-primary text-lg">{price}</span>
 					<Button
 						size="icon"
@@ -47,7 +47,7 @@ export const MenuItem = ({
 					>
 						<span className="material-symbols-outlined text-sm">add</span>
 					</Button>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
