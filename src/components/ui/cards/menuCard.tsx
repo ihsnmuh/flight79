@@ -1,6 +1,5 @@
 import type { BadgeVariant } from "@/interfaces/menus.interface";
 import { Badge } from "../Badge";
-import { Button } from "../Button";
 
 interface MenuItemProps {
 	image: string;
@@ -45,7 +44,7 @@ export const MenuItem = ({
 						variant="secondary"
 						className="w-8 h-8 hover:bg-brand-primary hover:text-white"
 					>
-						<span className="material-symbols-outlined text-sm">add</span>
+						<Plus size={16} />
 					</Button>
 				</div> */}
 			</div>

@@ -1,5 +1,6 @@
-import React from 'react';
+
 import { Badge } from '../ui/Badge';
+import { ArrowRight, Calendar } from 'lucide-react';
 
 export default function Blog() {
   return (
@@ -7,12 +8,11 @@ export default function Blog() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div>
-            <div className="text-brand-primary font-bold text-sm tracking-widest uppercase mb-2">Latest News</div>
-            <h2 className="text-3xl md:text-4xl font-serif font-medium text-brand-text">Stories Behind the Cup</h2>
-          </div>
-          <a href="/" className="group flex items-center gap-2 text-sm font-bold hover:text-brand-primary transition-colors">
-            View all articles
-            <span className="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+            <div className="text-brand-primary font-bold text-sm tracking-widest uppercase mb-2">Cabin Stories</div>
+<h2 className="text-2xl sm:text-3xl md:text-4xl font-recoleta font-medium text-brand-text">Tales from Our Journey</h2>
+              <a href="/" className="group flex items-center gap-2 text-sm sm:text-base font-bold hover:text-brand-primary transition-colors">
+            Explore All Stories
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </a>
         </div>
         
@@ -64,10 +64,10 @@ function BlogCard({ image, category, date, title, desc }: { image: string, categ
             </div>
             <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-center gap-2 text-xs text-brand-muted mb-3">
-                    <span className="material-symbols-outlined text-sm">calendar_today</span>
+                    <Calendar size={16} />
                     <span>{date}</span>
                 </div>
-                <h3 className="text-lg font-bold font-serif mb-3 leading-snug group-hover:text-brand-primary transition-colors">{title}</h3>
+                <h3 className="text-lg font-bold font-recoleta mb-3 leading-snug group-hover:text-brand-primary transition-colors">{title}</h3>
                 <p className="text-sm text-brand-muted mb-4 line-clamp-2 flex-1">{desc}</p>
                 <button className="text-sm font-bold text-brand-primary flex items-center gap-1 group-hover:underline cursor-pointer">
                     Read More

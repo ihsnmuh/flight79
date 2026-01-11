@@ -28,34 +28,35 @@ export default function Hero({
 				<div className="max-w-3xl flex flex-col gap-6">
 					<div className="inline-flex items-center gap-2 text-brand-accent font-bold text-sm tracking-widest uppercase">
 						<span className="w-8 h-px bg-brand-accent"></span>
-						First Class Experience
+						Boarding Now
 					</div>
 
-					<h1 className="text-5xl md:text-7xl font-recoleta font-semibold leading-[1.1] text-white">
-						Flight 79 Coffee <br />
-						<span className="text-brand-primary">& Eatery</span>
+					<h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-recoleta font-semibold leading-[1.1] text-white">
+						Where Coffee <br />
+						<span className="text-brand-primary">Takes Flight</span>
 					</h1>
 
-					<p className="text-white/90 text-lg leading-relaxed max-w-xl mt-2 font-light">
-						A unique aviation-themed cafe offering both expertly crafted coffee
-						and a diverse global menu. Enjoy Western, Indonesian, and Italian
-						cuisine in a first-class atmosphere. The perfect spot for any
-						craving, from espresso to full meals.
+					<p className="text-white/90 text-base sm:text-lg leading-relaxed max-w-xl mt-2 font-light">
+						Experience the perfect blend of aviation charm and culinary excellence. 
+						From specialty coffee beans sourced globally to mouthwatering dishes that 
+						transport your taste buds—every visit is a first-class journey.
 					</p>
 
-					<div className="flex flex-wrap items-center gap-4 mt-4">
-						<Button variant="default" size="lg">
-							Reserve Table
+					<div className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-4 mt-4">
+						<Button variant="default" size="lg" className="w-full sm:w-auto">
+							Book Your Flight
 						</Button>
-						<div className="w-px h-8 bg-white/20" />
-						<div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white shadow-sm">
+						<div className="hidden sm:block w-px h-8 bg-white/20" />
+						<div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white shadow-sm w-full sm:w-auto justify-center">
 							<Dotpulse isOpen={isOpen} />
-							<p className="text-sm font-medium text-center">
-								{isWeekend ? openingHours.weekend : openingHours.week}
-							</p>
-							<p className="text-sm font-medium text-center">
-								{isOpen ? "We are Open!" : "Sorry, We are Closed!"}
-							</p>
+							<div className="text-center">
+								<p className="text-xs sm:text-sm font-medium">
+									{isWeekend ? openingHours.weekend : openingHours.week}
+								</p>
+								<p className="text-xs sm:text-sm font-medium">
+									{isOpen ? "We're Open!" : "Sorry, We're Closed!"}
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>

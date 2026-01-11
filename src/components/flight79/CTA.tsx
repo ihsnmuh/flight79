@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 
@@ -10,21 +10,20 @@ export default function CTA() {
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
       <div className="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-10 text-center text-white">
-        <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">Ready for takeoff at Flight 79?</h2>
-        <p className="text-white/80 max-w-xl mx-auto mb-8 text-lg">A unique aviation-themed cafe offering both expertly crafted coffee and a diverse global menu. Enjoy Western, Indonesian, and Italian cuisine in a first-class atmosphere. The perfect spot for any craving, from espresso to full meals.</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-recoleta font-medium mb-6">Your Table Awaits Aboard Flight 79</h2>
+        <p className="text-white/80 max-w-xl mx-auto mb-8 text-base sm:text-lg">Don't just read about it—experience the magic yourself. Reserve your seat for an unforgettable journey where exceptional coffee meets culinary artistry in an atmosphere that transports you to new heights.</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
           <Input 
-            className="w-full sm:w-auto flex-1 h-12 rounded-full px-6 text-brand-text border-none bg-white" 
+            className="w-full sm:w-auto flex-1 h-12 rounded-full px-6 text-brand-text border-none bg-white text-sm sm:text-base" 
             placeholder="Enter your name..." 
             type="text" 
           />
           <Button 
-            variant="flight-primary" 
+            variant="default" 
             size="lg" 
-            rounded="full"
-            className="w-full sm:w-auto shadow-lg shadow-brand-primary/30"
+            className="w-full sm:w-auto shadow-lg shadow-brand-primary/30 rounded-full text-sm sm:text-base px-6 sm:px-8"
           >
-            Reserve a Table
+            Book Your First-Class Experience
           </Button>
         </div>
         <p className="mt-4 text-xs text-white/50">*Reservations valid for min. 4 people</p>

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '../Button';
+import { Plus } from 'lucide-react';
 
 const meta = {
   title: 'UI/Button',
@@ -65,6 +66,6 @@ export const Icon: Story = {
         size: 'icon',
         variant: 'secondary',
         className: 'rounded-full',
-        children: <span className="material-symbols-outlined text-sm">add</span>
+        children: <Plus size={16} />
     }
 }

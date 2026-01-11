@@ -22,16 +22,16 @@ export default function Reviews() {
 		<section className="py-20 bg-white">
 			<div className="max-w-[1280px] mx-auto px-4 sm:px-10">
 				<div className="flex items-center gap-2 mb-8">
-					<h2 className="text-3xl font-recoleta font-medium">
-						Passenger Reviews
+					<h2 className="text-2xl sm:text-3xl font-recoleta font-medium">
+						What Our Travelers Say
 					</h2>
 					<div className="h-px bg-gray-200 flex-1 ml-4"></div>
 				</div>
 
-				<div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-					<div className="lg:col-span-4 flex flex-col gap-6">
-						<div className="flex items-center gap-3">
-							<div className="w-12 h-12 rounded-full bg-gray-100 bg-cover border border-gray-200">
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
+					<div className="lg:col-span-4 flex flex-col gap-4 sm:gap-6">
+						<div className="flex items-center gap-2 sm:gap-3">
+							<div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 bg-cover border border-gray-200">
 								<img
 									alt="Reviewer Adnan"
 									className="w-full h-full object-cover"
@@ -39,7 +39,7 @@ export default function Reviews() {
 								/>
 							</div>
 							<div>
-								<h4 className="font-bold text-sm">
+								<h4 className="font-bold text-xs sm:text-sm">
 									{reviewsFirstData.user.name}
 								</h4>
 								<p className="text-xs text-brand-muted">Customer</p>
@@ -49,14 +49,14 @@ export default function Reviews() {
 							{Array.from({ length: reviewsFirstData.rating }).map((_, idx) => (
 								<Star
 									key={idx}
-									width={20}
-									height={20}
+									width={16}
+									height={16}
 									fill="var(--color-yellow-400)"
 									color="none"
 								/>
 							))}
 						</div>
-						<h3 className="text-xl font-bold leading-snug">
+						<h3 className="text-lg sm:text-xl font-bold leading-snug">
 							{reviewsFirstData.snippet}
 						</h3>
 						{/* <p className="text-brand-muted text-sm leading-relaxed">
@@ -77,7 +77,7 @@ export default function Reviews() {
 						</div>
 					</div>
 
-					<div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
 						{listReview.map((review) => (
 							<ReviewCard
 								key={review.user.name}
@@ -98,7 +98,7 @@ export default function Reviews() {
 							window.open(urlReviews, "_blank");
 						}}
 					>
-						See all reviews
+						Read More Passenger Stories
 						<ExternalLink width={16} height={16} />
 					</Button>
 				</div>

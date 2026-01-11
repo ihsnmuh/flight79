@@ -1,55 +1,78 @@
-import React from 'react';
+import Flight79Logo from "../ui/logos/flight79";
 
 export default function Footer() {
   return (
     <footer className="bg-brand-bg pt-16 pb-8">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-          <div className="col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="material-symbols-outlined text-brand-primary" style={{ fontSize: "24px" }}>flight_takeoff</span>
-              <h3 className="text-lg font-bold font-serif">Flight 79 Coffee and Eatery</h3>
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-12">
+          {/* Brand Section */}
+          <div className="flex flex-col items-center lg:items-start space-y-3 lg:space-y-4 text-center lg:text-left">
+            <Flight79Logo className="w-24 lg:w-32 h-auto" />
+            <p className="text-brand-muted text-xs sm:text-sm max-w-xs">
+              Where every visit is a journey worth remembering.
+            </p>
+          </div>
+          
+          {/* Navigation & Hours Combined for Mobile */}
+          <div className="lg:hidden space-y-6">
+            <div>
+              <h4 className="font-bold text-brand-text mb-3">Quick Links</h4>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <a href="#about" className="block text-brand-muted hover:text-brand-primary transition-colors">About</a>
+                <a href="#menu" className="block text-brand-muted hover:text-brand-primary transition-colors">Menu</a>
+                <a href="#atmosphere" className="block text-brand-muted hover:text-brand-primary transition-colors">Ambiance</a>
+                <a href="#reviews" className="block text-brand-muted hover:text-brand-primary transition-colors">Reviews</a>
+              </div>
             </div>
-            <p className="text-brand-muted text-sm max-w-xs mb-6">A unique aviation-themed cafe offering both expertly crafted coffee and a diverse global menu.</p>
-            <div className="flex gap-4">
-              <a href="/" className="text-brand-text hover:text-brand-primary transition-colors"><span className="material-symbols-outlined">public</span></a>
-              <a href="/" className="text-brand-text hover:text-brand-primary transition-colors"><span className="material-symbols-outlined">videocam</span></a>
-              <a href="/" className="text-brand-text hover:text-brand-primary transition-colors"><span className="material-symbols-outlined">mail</span></a>
+            <div>
+              <h4 className="font-bold text-brand-text mb-3">Hours</h4>
+              <div className="text-brand-muted text-sm">
+                <p>Mon-Fri: 08:00 - 22:00</p>
+                <p>Sat-Sun: 07:00 - 23:00</p>
+              </div>
             </div>
           </div>
-          <div>
-            <h4 className="font-bold text-sm mb-4 uppercase tracking-wider">Company</h4>
-            <ul className="space-y-2 text-sm text-brand-muted">
-              <li><a href="/" className="hover:text-brand-primary">About Us</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Careers</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Blog</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Press</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold text-sm mb-4 uppercase tracking-wider">Support</h4>
-            <ul className="space-y-2 text-sm text-brand-muted">
-              <li><a href="/" className="hover:text-brand-primary">Contact Us</a></li>
-              <li><a href="/" className="hover:text-brand-primary">FAQ</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Terms & Conditions</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Privacy Policy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-bold text-sm mb-4 uppercase tracking-wider">Services</h4>
-            <ul className="space-y-2 text-sm text-brand-muted">
-              <li><a href="/" className="hover:text-brand-primary">Delivery</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Membership</a></li>
-              <li><a href="/" className="hover:text-brand-primary">Gift Card</a></li>
-            </ul>
+
+          {/* Desktop Layout */}
+          <div className="hidden lg:flex lg:flex-row lg:justify-between lg:gap-12">
+            {/* Navigation */}
+            <div className="text-center lg:text-left">
+              <h4 className="font-bold text-brand-text mb-4">Discover</h4>
+              <div className="space-y-2 text-sm">
+                <a href="#about" className="block text-brand-muted hover:text-brand-primary transition-colors">Our Story</a>
+                <a href="#menu" className="block text-brand-muted hover:text-brand-primary transition-colors">Menu Journey</a>
+                <a href="#atmosphere" className="block text-brand-muted hover:text-brand-primary transition-colors">Ambiance</a>
+                <a href="#reviews" className="block text-brand-muted hover:text-brand-primary transition-colors">Testimonials</a>
+                <a href="#location" className="block text-brand-muted hover:text-brand-primary transition-colors">Find Us</a>
+              </div>
+            </div>
+            
+            {/* Hours */}
+            <div className="text-center lg:text-left">
+              <h4 className="font-bold text-brand-text mb-4">Flight Schedule</h4>
+              <div className="text-brand-muted text-sm space-y-1">
+                <p>Mon-Fri: 08:00 - 22:00</p>
+                <p>Sat-Sun: 07:00 - 23:00</p>
+              </div>
+            </div>
+            
+            {/* Contact */}
+            <div className="text-center lg:text-left">
+              <h4 className="font-bold text-brand-text mb-4">Contact Tower</h4>
+              <div className="text-brand-muted text-sm space-y-1">
+                <a href="#location" className="block hover:text-brand-primary transition-colors">Get Directions</a>
+                <a href="tel:+628123456789" className="block hover:text-brand-primary transition-colors">Call Us</a>
+                <a href="mailto:info@flight79.com" className="block hover:text-brand-primary transition-colors">Send Message</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-brand-muted">© 2023 Flight 79 Coffee and Eatery. All rights reserved.</p>
-          <div className="flex gap-6 text-sm text-brand-muted">
-            <a href="/" className="hover:text-brand-primary">Privacy Policy</a>
-            <a href="/" className="hover:text-brand-primary">Terms of Service</a>
-          </div>
+        
+        {/* Copyright */}
+        <div className="border-t border-gray-200 pt-6 mt-12 text-center">
+          <p className="text-brand-muted text-xs">
+            &copy; 2024 Flight 79 Coffee and Eatery. Your journey begins here.
+          </p>
         </div>
       </div>
     </footer>
