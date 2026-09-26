@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     locale: "id_ID",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/flight79-logo.svg",
+    shortcut: "/flight79-logo.svg",
   },
 };
 

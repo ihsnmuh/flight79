@@ -72,6 +72,11 @@ body {
 
 .font-display { font-family: "Barlow Condensed", "Franklin Gothic Condensed", sans-serif; }
 .font-body { font-family: "Manrope", "Avenir Next", sans-serif; }
+.brand-logo {
+  background-color: currentColor;
+  -webkit-mask: url("/flight79-logo.svg") center / contain no-repeat;
+  mask: url("/flight79-logo.svg") center / contain no-repeat;
+}
 .eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
 .text-outline { color: transparent; -webkit-text-stroke: 1px rgba(244,239,228,.8); }
 .nav-link { position: relative; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(244,239,228,.72); transition: color .3s ease; }
