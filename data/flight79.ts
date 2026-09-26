@@ -195,6 +195,44 @@ export const experienceFeatures = [
   },
 ] as const;
 
+export const galleryItems = [
+  {
+    src: "/flight79-first.jpg",
+    alt: "Area duduk Flight 79 dengan mural peta dunia dan deretan lampu gantung",
+    className: "md:col-span-7 md:row-span-2",
+    imageClassName: "object-center",
+    sizes: "(min-width: 768px) 58vw, 100vw",
+  },
+  {
+    src: "/flight79-coffee-machine.jpg",
+    alt: "Mesin espresso Flight 79 dengan secangkir kopi yang baru diseduh",
+    className: "!min-h-[24rem] md:col-span-5 md:row-span-2 md:!min-h-0",
+    imageClassName: "object-center",
+    sizes: "(min-width: 768px) 42vw, 100vw",
+  },
+  {
+    src: "/flight79-third.jpg",
+    alt: "Area makan Flight 79 dengan tanaman rambat dan pencahayaan alami",
+    className: "md:col-span-8 md:row-span-2",
+    imageClassName: "object-center",
+    sizes: "(min-width: 768px) 66vw, 100vw",
+  },
+  {
+    src: "/flight79-second-plane.jpg",
+    alt: "Koleksi miniatur pesawat yang memperkuat tema aviasi Flight 79",
+    className: "md:col-span-4",
+    imageClassName: "object-center",
+    sizes: "(min-width: 768px) 34vw, 100vw",
+  },
+  {
+    src: "/flight79-second-logo.jpg",
+    alt: "Logo Flight 79 dengan iluminasi hangat pada dinding interior",
+    className: "hidden md:col-span-4 md:block",
+    imageClassName: "object-center",
+    sizes: "(min-width: 768px) 34vw, 100vw",
+  },
+] as const;
+
 export const reviews = [
   {
     author: "nabella puspita",
