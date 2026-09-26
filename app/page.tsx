@@ -9,7 +9,6 @@ import {
   MapPin,
   Phone,
   Radio,
-  Star,
   Users,
   UtensilsCrossed,
 } from "lucide-react";
@@ -17,6 +16,7 @@ import { AnalyticsEvents } from "@/components/analytics-events";
 import { BrandLogo } from "@/components/brand-logo";
 import { EventSlider } from "@/components/event-slider";
 import { MenuExplorer } from "@/components/menu-explorer";
+import { ReviewSlider } from "@/components/review-slider";
 import { ReservationForm } from "@/components/reservation-form";
 import { SiteHeader } from "@/components/site-header";
 import {
@@ -24,7 +24,6 @@ import {
   eventSlides,
   events,
   experienceFeatures,
-  reviews,
 } from "@/data/flight79";
 
 type GalleryItem = {
@@ -404,71 +403,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            {reviews.map((review, index) => (
-              <article
-                key={review.author}
-                className={`flex min-h-72 flex-col border border-ink/15 p-6 sm:p-8 ${
-                  index === 0 ? "bg-navy text-cream" : "bg-cream text-ink"
-                }`}
-              >
-                <div className="flex items-center justify-between gap-5">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`grid size-11 shrink-0 place-items-center rounded-full text-xs font-extrabold tracking-wide ${
-                        index === 0
-                          ? "bg-amber text-navy"
-                          : "bg-navy text-cream"
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {review.initials}
-                    </span>
-                    <div>
-                      <h3 className="text-sm font-bold capitalize">
-                        {review.author}
-                      </h3>
-                      <p
-                        className={`mt-1 text-xs ${
-                          index === 0 ? "text-cream/45" : "text-ink/40"
-                        }`}
-                      >
-                        {review.date}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="eyebrow text-amber">Google Maps</p>
-                </div>
-
-                <div
-                  className="mt-7 flex gap-1 text-amber"
-                  aria-label={`${review.rating} dari 5 bintang`}
-                >
-                  {Array.from({ length: review.rating }, (_, starIndex) => (
-                    <Star
-                      key={starIndex}
-                      className="size-4 fill-current"
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-
-                <blockquote className="mt-6 font-display text-2xl font-semibold uppercase leading-snug tracking-wide sm:text-3xl">
-                  “{review.text}”
-                </blockquote>
-
-                <footer
-                  className={`mt-auto border-t pt-5 text-[.65rem] font-bold uppercase tracking-[.14em] ${
-                    index === 0
-                      ? "border-cream/15 text-cream/40"
-                      : "border-ink/15 text-ink/35"
-                  }`}
-                >
-                  Pilihan review · lihat sumber lengkap di Google Maps
-                </footer>
-              </article>
-            ))}
-          </div>
+          <ReviewSlider />
         </div>
       </section>
 
