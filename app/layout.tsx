@@ -1,19 +1,51 @@
 import type { Metadata } from "next";
+import { site } from "@/data/flight79";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://flight79-kbp.astral-giant-6903.chatgpt.site"),
-  title: "Flight 79 | Aviation-Themed Coffee & Eatery",
-  description: "Enjoy first-class flavor at Flight 79, an aviation-themed coffee and eatery in Kota Baru Parahyangan.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  applicationName: site.name,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Flight 79 | First-Class Flavor, On the Ground",
-    description: "Coffee, comfort food, and an aviation-themed dining experience in Kota Baru Parahyangan.",
+    title: site.title,
+    description: site.description,
+    url: "/",
+    siteName: site.name,
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/flight79-hero.jpg",
+        width: 3936,
+        height: 2624,
+        alt: "Flight 79 aviation-themed cafe and restaurant in Kota Baru Parahyangan",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: ["/flight79-hero.jpg"],
   },
   icons: {
-    icon: "/flight79-logo.svg",
-    shortcut: "/flight79-logo.svg",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
   },
 };
 
