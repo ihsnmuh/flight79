@@ -16,13 +16,15 @@ export const menuItems = [
   {
     name: "Butter Croissant",
     categoryId: "breakfast",
-    description: "Croissant klasik dengan lapisan renyah di luar dan bagian dalam yang lembut.",
+    description:
+      "Croissant klasik dengan lapisan renyah di luar dan bagian dalam yang lembut.",
     price: "18",
   },
   {
     name: "Signature Salad 79",
     categoryId: "breakfast",
-    description: "Campuran sayuran hijau renyah dengan dressing soy vinaigrette.",
+    description:
+      "Campuran sayuran hijau renyah dengan dressing soy vinaigrette.",
     price: "39",
   },
   {
@@ -34,25 +36,29 @@ export const menuItems = [
   {
     name: "English Breakfast 79er - Bread",
     categoryId: "breakfast",
-    description: "Telur sunny side up, roti gandum, daging asap, jamur, dan salad segar.",
+    description:
+      "Telur sunny side up, roti gandum, daging asap, jamur, dan salad segar.",
     price: "55",
   },
   {
     name: "The Cabin Crew's Croissant",
     categoryId: "breakfast",
-    description: "Croissant mentega dengan telur mata sapi, keripik kentang, dan salad segar.",
+    description:
+      "Croissant mentega dengan telur mata sapi, keripik kentang, dan salad segar.",
     price: "58",
   },
   {
     name: "Nasi Goreng 79",
     categoryId: "mains",
-    description: "Nasi goreng khas Flight 79 dengan ayam goreng, sate lilit, dan telur mata sapi.",
+    description:
+      "Nasi goreng khas Flight 79 dengan ayam goreng, sate lilit, dan telur mata sapi.",
     price: "58.5",
   },
   {
     name: "Cruising Iga Bakar Konro",
     categoryId: "mains",
-    description: "Iga bakar lembut dengan sambal hijau yang segar dan aromatik.",
+    description:
+      "Iga bakar lembut dengan sambal hijau yang segar dan aromatik.",
     price: "90",
   },
   {
@@ -64,7 +70,8 @@ export const menuItems = [
   {
     name: "Spaghetti Carbonara",
     categoryId: "mains",
-    description: "Spaghetti dengan saus krim lembut dan smoked beef yang gurih.",
+    description:
+      "Spaghetti dengan saus krim lembut dan smoked beef yang gurih.",
     price: "45",
   },
   {
@@ -94,14 +101,46 @@ export const menuItems = [
   {
     name: "Morning Glory",
     categoryId: "refreshers",
-    description: "Green tea, lavender, chamomile, dried lemon, dan butterfly pea.",
+    description:
+      "Green tea, lavender, chamomile, dried lemon, dan butterfly pea.",
     price: "25",
   },
   {
     name: "Strawberry Smoothies",
     categoryId: "refreshers",
-    description: "Smooth blend stroberi dan pisang dengan buah segar serta granola.",
+    description:
+      "Smooth blend stroberi dan pisang dengan buah segar serta granola.",
     price: "49",
+  },
+  {
+    name: "Espresso",
+    categoryId: "coffee",
+    description: "Ekstraksi kopi pekat untuk rasa yang langsung dan fokus.",
+    price: "20",
+  },
+  {
+    name: "Americano",
+    categoryId: "coffee",
+    description: "Espresso dengan tambahan air untuk karakter yang lebih ringan.",
+    price: "23",
+  },
+  {
+    name: "Cappuccino",
+    categoryId: "coffee",
+    description: "Espresso dan susu dengan foam lembut, tersedia hot atau ice.",
+    price: "32",
+  },
+  {
+    name: "Café Latte",
+    categoryId: "coffee",
+    description: "Espresso berpadu dengan susu, tersedia hot atau ice.",
+    price: "32",
+  },
+  {
+    name: "Iced Coffee 79",
+    categoryId: "coffee",
+    description: "Signature iced coffee dari Flight 79.",
+    price: "38",
   },
   {
     name: "Panna Cotta",
@@ -142,8 +181,8 @@ export const menuCategories = [
     label: "Breakfast & Light",
     description: "Pilihan ringan untuk membuka hari atau menemani kopi.",
     image: {
-      src: "/flight79-menu.jpg",
-      alt: "Inspirasi kategori sarapan dan pilihan ringan",
+      src: "/menus/menu-pastery.jpeg",
+      alt: "Banyak pilihan pastry dan croissant sebagai inspirasi kategori breakfast Flight 79",
       position: "12% 70%",
     },
   },
@@ -153,8 +192,8 @@ export const menuCategories = [
     label: "Main Course",
     description: "Hidangan utama yang familiar dengan karakter Flight 79.",
     image: {
-      src: "/flight79-menu.jpg",
-      alt: "Inspirasi kategori hidangan utama Flight 79",
+      src: "/menus/menu-sopbuntut.jpg",
+      alt: "Sop buntut dengan potongan daging empuk dan kuah kaldu yang kaya rasa sebagai inspirasi kategori main course Flight 79",
       position: "66% 52%",
     },
   },
@@ -164,16 +203,32 @@ export const menuCategories = [
     label: "Refreshers",
     description: "Pilihan segar untuk menemani perjalanan rasa.",
     image: {
-      src: "/flight79-menu.jpg",
-      alt: "Inspirasi kategori minuman segar Flight 79",
+      src: "/menus/menu-berrytakeoff.jpg",
+      alt: "Berry Take-Off dengan whipped cream dan buah beri sebagai inspirasi sweet landing",
       position: "94% 44%",
     },
   },
   {
-    id: "dessert",
+    id: "coffee",
     number: "04",
+    label: "Coffee",
+    description: "Espresso classics dan signature coffee untuk menemani setiap waktu.",
+    image: {
+      src: "/menus/menu-coffee.jpg",
+      alt: "Mesin espresso Flight 79 dengan secangkir kopi yang baru diseduh",
+      position: "50% 50%",
+    },
+  },
+  {
+    id: "dessert",
+    number: "05",
     label: "Dessert",
     description: "Sweet landing untuk menutup waktu bersama.",
+    image: {
+      src: "/menus/menu-dessert.jpeg",
+      alt: "Lelehan cokelat premium hangat dalam balutan kue lembut. Dilengkapi dengan topping premium untuk pengalaman pencuci mulut yang tak terlupakan.",
+      position: "50% 52%",
+    },
   },
 ] as const;
 

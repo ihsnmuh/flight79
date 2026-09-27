@@ -131,7 +131,7 @@ export function MenuExplorer() {
             {activeItems.map((item) => (
               <li
                 key={item.name}
-                className="grid gap-3 border-b border-ink/15 py-6 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-8"
+                className="border-b border-ink/15 py-6"
               >
                 <div>
                   <div className="flex items-center gap-3">
@@ -144,9 +144,6 @@ export function MenuExplorer() {
                     {item.description}
                   </p>
                 </div>
-                <span className="text-[.65rem] font-bold uppercase tracking-[.13em] text-ink/35 sm:pt-2">
-                  Rp {item.price}K
-                </span>
               </li>
             ))}
           </ul>

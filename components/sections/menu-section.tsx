@@ -11,7 +11,7 @@ export function MenuSection() {
           <a href={contact.menuUrl} data-track="view_full_menu" className="text-link" target="_blank" rel="noreferrer">View Full Menu <ArrowRight className="size-4" /></a>
         </div>
         <MenuExplorer />
-        <p className="mt-8 text-xs leading-relaxed text-ink/45">Foto digunakan sebagai visual kategori, bukan representasi setiap item. Harga ditulis dalam ribuan rupiah dan dapat berubah; lihat menu lengkap untuk pilihan dan informasi terbaru.</p>
+        <p className="mt-8 text-xs leading-relaxed text-ink/45">Foto digunakan sebagai visual kategori, bukan representasi setiap item. Lihat menu lengkap untuk pilihan dan informasi terbaru.</p>
       </div>
     </section>
   );
