@@ -1,126 +1,195 @@
-# vinext-starter
+# Flight 79
 
-A clean full-stack starter running on [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and Drizzle support.
+Public marketing website for **Flight 79**, an aviation-themed coffee and eatery
+at Ruko Sasakirana 79, Kota Baru Parahyangan.
 
-## Prerequisites
+The site presents the venue, menu highlights, event capabilities, customer
+reviews, location details, and a direct WhatsApp reservation flow. Its visual
+direction combines an airport-lounge editorial layout with Flight 79's deep
+navy, warm cream, coffee brown, aircraft silver, and amber palette.
+
+## Features
+
+- Responsive landing page for mobile, tablet, and desktop
+- English and Indonesian language switcher
+- Menu explorer with multiple food and beverage categories
+- Venue gallery and event image slider
+- Static customer review carousel with a Google Maps CTA
+- Google Maps location embed and arrival information
+- WhatsApp reservation form and conversion CTAs
+- Instagram and TikTok links
+- Local-business JSON-LD for `Restaurant` and `CafeOrCoffeeShop`
+- Canonical, Open Graph, Twitter Card, robots, sitemap, and manifest metadata
+- Reduced-motion support and keyboard-accessible interactive controls
+
+## Technology
+
+- [Next.js](https://nextjs.org/) App Router
+- [React](https://react.dev/)
+- TypeScript
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Vinext](https://github.com/cloudflare/vinext)
+- Cloudflare Workers runtime
+- pnpm `11.25.0`
+
+## Requirements
 
 - Node.js `>=22.13.0`
-- Portable: Windows, macOS, or Linux; no Bash required
-- Managed Linux: managed Linux runtime with Bash, `flock`, `curl`, `sha256sum`, and GNU `timeout`
-- Git is required only for publishing
+- pnpm `11.25.0`
 
-## Sites Lifecycle
+Use pnpm for this project. Do not generate an npm or Yarn lockfile.
 
-The Sites initializer copies the shared starter and selects managed-linux only when `SITES_MANAGED_LINUX_CONTAINER=1`; otherwise it selects portable. It saves the selection only in ignored `.sites-runtime/execution-profile.json`. Both profiles copy/configure first, then use the plugin's separate `install-dependencies.mjs` step to measure installation independently. Edit source under `app/` and follow the Sites skill for installation, preview, builds, and publishing.
+## Getting Started
 
-Run `node <plugin-root>/scripts/configure-execution-profile.mjs` only when the profile is unknown for the current checkout and environment. Profile changes do not alter tracked source or require reinstalling otherwise-valid dependencies; restart an existing preview to use the new selection. Do not commit or upload `.sites-runtime/`.
+Install dependencies:
 
-This starter does not use `wrangler.jsonc`.
-
-`install:ci` runs `npm ci` once against the shared lockfile, disables parent-workspace discovery, and includes required dev/optional dependencies despite production/omit settings. Sharp defaults to prebuilt binaries unless explicitly configured otherwise. Do not overlap installers.
-
-- **Portable:** Preserve host HOME, npm cache, registry, proxy, temporary paths, retry/concurrency settings, and lifecycle-script policy. Use `--prefer-offline --no-audit --no-fund`.
-- **Managed Linux:** Use the existing project-local HOME/cache/tmp setup and Linux install lock, tarball preflight, and timeout. Restore the image-seeded npm cache only when its lockfile hash matches; retain network fallback. Builds keep their existing timeout. These helpers are not invoked by the portable profile.
-
-`scripts/sites-env.mjs` preserves the caller's HOME, npm cache, proxy, XDG, and temporary-directory configuration while defaulting Wrangler and Miniflare state to the checkout. If npm reports an unwritable cache, select a writable path with `npm_config_cache` for that install. The `dev` and `start` scripts also keep Wrangler logs inside the checkout. Generated `.sites-runtime/` and `.wrangler/` directories are disposable and ignored by Git.
-
-On portable, `npm run dev` uses `vinext dev` with HMR, starting at port 5173. Vinext records the running server in ignored `.vinext/` state, rejects an ordinary duplicate launch, and recovers stale state after a stopped process; exactly simultaneous starts can race. Pass `--port <port>` or `--hostname <host>` after `npm run dev --` when needed; keep portable previews on loopback.
-
-For browser QA on managed Linux, use `sites-preview start`. The project's dev script runs Vite and accepts the supervisor's `--host 0.0.0.0 --port 4173 --strictPort` arguments. The internal browser uses `http://terminal.local:4173/`; it is not a user-facing URL. The supervisor owns the preview lifecycle. The ignored local profile survives the supervisor's cleared process environment.
-
-The portable profile simulates ChatGPT sign-in only for loopback development requests. Visit `/signin-with-chatgpt?return_to=/` to sign in as `local_seedy` (`seedy@sites.test`, display name `Seedy`) and `/signout-with-chatgpt?return_to=/` to sign out. The development cookie preserves that identity across server restarts. Mock auth is disabled in the managed-linux profile and is not included in production builds; hosted authentication remains dispatch-owned.
-
-The Worker uses `vinext/server/fetch-handler`, including Vinext's config-aware image handling. After building, `npm start` runs that Worker locally through Wrangler on `127.0.0.1`, sharing `.wrangler/state` with dev preview and local D1 migrations; it does not deploy the site or simulate sign-in. Use the URL printed by the server. Pass `npm start -- --port <port>` to select a different built-preview port.
-
-Local previews use Miniflare's placeholder `Request.cf` metadata without a network lookup. Set `CLOUDFLARE_CF_FETCH_ENABLED=true` to opt into fetching preview metadata; this setting does not change hosted request metadata.
-
-Local tool usage metrics are disabled by default. Set `WRANGLER_SEND_METRICS=true` to opt in.
-
-## Included Shape
-
-- edit site code under `app/`
-- `app/chatgpt-auth.ts` provides optional dispatch-owned ChatGPT sign-in helpers
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/index.ts` reads the D1 binding from the Cloudflare Worker environment
-- `db/schema.ts` starts intentionally empty
-- `@cloudflare/workers-types` provides Worker types; `cloudflare-env.d.ts` declares optional `DB`/`BUCKET` bindings—update these declarations if binding names change
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
-
-The user ID is stable for the same user on the same Site and different across Sites. Use it as the durable user key; use email and name for display or contact purposes.
-
-SIWC-authenticated workspace sites may also receive `oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty `name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by `oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+pnpm install
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+Start the development server:
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use the returned `userId` as the stable user key for user-owned records; do not use email as a durable identifier.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send anonymous visitors through Sign in with ChatGPT.
-- In a Server Component, start sign-in with `<a href={chatGPTSignInPath(returnTo)} target="_top">`. The auth helper module is server-only; do not import it into a Client Component.
-- Do not use `fetch`, XHR, a client-side router, or a framework link that can prefetch the sign-in route. SIWC must start as a top-level navigation.
-- Never request the AuthAPI authorization endpoint directly. The dispatch-owned `/signin-with-chatgpt` route must start the SIWC flow.
-- Use `chatGPTSignOutPath(returnTo)` for browser sign-out links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the OAuth cookies, and identity header injection. Do not implement app routes for those reserved paths. Routes that do not import and call the helper remain anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the Sites hosting platform's access policy controls for workspace-wide restrictions, or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Local D1 migrations
-
-For a D1-backed local preview, generate SQL with `npm run db:generate`. Build once through the Sites skill's build entrypoint (or `npm run build` for standalone use) to generate `dist/server/wrangler.json`, rebuilding if bindings change. From the project root, apply each pending migration in order:
-
-```sh
-node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_example.sql
+```bash
+pnpm dev
 ```
 
-Replace the filename with the pending migration and `DB` with your D1 binding name if different. Use `.wrangler/state`, not `.wrangler/state/v3`; Wrangler adds the versioned directories. Do not replay migrations already applied locally. This updates only the preview database; publishing applies production migrations separately.
+The local site is available at [http://localhost:5173](http://localhost:5173).
+If that port is already occupied, Vinext will print the alternative port in the
+terminal.
 
-## Diagnostic Commands
+Create a production build:
 
-- `npm run install:ci`: perform the one locked dependency install
-- `npm run dev`: start the Vite/Vinext development server
-- `npm run build`: build the deployable Sites artifact
-- `npm run start`: preview the built Worker locally with D1/R2 support
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+```bash
+pnpm build
+```
 
-When using the Sites plugin, follow its skill instructions for installation, builds, and publishing. These npm commands remain available for standalone use.
+Preview the built Worker locally:
 
-The portable build runs Vinext directly without a host `timeout` command. The managed-linux build uses `scripts/build-verified.sh` and its existing `SITES_BUILD_TIMEOUT` setting.
+```bash
+pnpm start
+```
 
-## Learn More
+Linting is available when specifically needed:
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+```bash
+pnpm lint
+```
+
+Generated files are written to `dist/`. Do not edit that directory manually.
+
+## Project Structure
+
+```text
+app/
+  layout.tsx        Global metadata and document shell
+  page.tsx          Landing-page composition and section order
+  globals.css       Brand tokens and shared visual styles
+  manifest.ts       Web app manifest
+  robots.ts         Crawler directives
+  sitemap.ts        XML sitemap
+components/
+  sections/         Reusable landing-page sections
+  ui/               Shared UI primitives
+  event-slider.tsx  Special Occasions carousel
+  menu-explorer.tsx Interactive menu categories
+  review-slider.tsx Customer review carousel
+data/
+  flight79.ts       Editable site, business, menu, and media content
+lib/
+  i18n.ts           English and Indonesian interface copy
+public/
+  events/           Event photography
+  menus/            Menu photography
+  flight79-*.jpg    Venue and brand photography
+```
+
+## Editing Business Content
+
+Frequently edited business data lives in [`data/flight79.ts`](data/flight79.ts),
+including:
+
+- Production site URL and SEO description
+- Phone, email, address, opening hours, parking, and Maps URL
+- WhatsApp reservation URL
+- Instagram and TikTok profiles
+- Menu categories and menu items
+- Gallery images
+- Reviews and event slides
+
+Avoid scattering business information through components. Update the shared
+data file so visible content, metadata, and structured data remain consistent.
+
+The default language is English. Translations used by the language switcher
+live in [`lib/i18n.ts`](lib/i18n.ts).
+
+## Images
+
+- Put venue images in `public/` and menu images in `public/menus/`.
+- Use `next/image` with meaningful alt text and accurate responsive `sizes`.
+- Keep the hero image optimized because it is the page's primary LCP candidate.
+- Images below the fold should remain lazy-loaded.
+- Generated imagery must be described as placeholder material and must not be
+  presented as photography of the real venue or dishes.
+
+## SEO
+
+SEO configuration is split across:
+
+- `app/layout.tsx`: page metadata, canonical URL, social cards, and crawler tags
+- `app/robots.ts`: `/robots.txt`
+- `app/sitemap.ts`: `/sitemap.xml`
+- `app/manifest.ts`: `/manifest.webmanifest`
+- `components/local-business-json-ld.tsx`: local-business structured data
+- `data/flight79.ts`: canonical business and site values
+
+Before deploying to a new domain, update `site.url` in `data/flight79.ts`. This
+value is used for canonical links, Open Graph URLs, the sitemap, robots, and
+JSON-LD identifiers.
+
+Do not add `AggregateRating` or review markup for Flight 79's own curated Google
+reviews. Google treats business-controlled review markup as self-serving and it
+is not eligible for local-business review stars.
+
+After deployment, verify the public URL with Google Search Console, Rich Results
+Test, PageSpeed Insights, and URL Inspection.
+
+## Deployment
+
+The current production build targets Vinext on a Cloudflare Workers-compatible
+runtime. `pnpm build` creates a Worker application and its client assets under
+`dist/`.
+
+This output is **not** a plain static HTML export that should be copied directly
+into an Nginx document root. For a VPS, run the built Worker-compatible server
+behind a reverse proxy, or perform a separate migration to a true static-export
+configuration.
+
+Publishing to any external host requires explicit approval. A successful local
+build does not deploy the website.
+
+## Design and Implementation Notes
+
+- Preserve the premium airport-lounge editorial direction.
+- Use Barlow Condensed for display typography and Manrope for body copy.
+- Keep mobile-first layouts and test mobile, tablet, and desktop breakpoints.
+- Prefer Server Components; use `"use client"` only for real interaction.
+- Maintain semantic sections, heading order, visible focus styles, and
+  reduced-motion behavior.
+- Track important CTA links using the existing `data-track` attributes.
+- External links must use safe targets and `rel="noreferrer"`.
+- Do not add ordering, payments, accounts, loyalty, or reservation backends
+  without explicitly expanding the project scope.
+
+## Verification Checklist
+
+Before opening a pull request:
+
+1. Confirm business information remains truthful and centralized.
+2. Check mobile, tablet, and desktop layouts.
+3. Run `pnpm build`.
+4. Run `git diff --check`.
+5. Verify affected interactions in the browser.
+
+## Repository
+
+[github.com/ihsnmuh/flight79](https://github.com/ihsnmuh/flight79)
