@@ -12,6 +12,12 @@ export const contact = {
     "https://wa.me/6285121306972?text=Halo%20Flight%2079%2C%20saya%20ingin%20reservasi%20meja.",
 };
 
+export const social = {
+  handle: "@flightseventyniner",
+  instagramUrl: "https://www.instagram.com/flightseventyniner/",
+  tiktokUrl: "https://www.tiktok.com/@flightseventyniner",
+};
+
 export const menuItems = [
   {
     name: "Butter Croissant",
@@ -231,6 +237,43 @@ export const menuCategories = [
     },
   },
 ] as const;
+
+export const menuEnglish = {
+  categoryDescriptions: {
+    breakfast: "Light choices to start the day or pair with your coffee.",
+    mains: "Familiar main dishes with Flight 79 character.",
+    refreshers: "Refreshing selections to accompany your flavor journey.",
+    coffee: "Espresso classics and signature coffee for any time of day.",
+    dessert: "A sweet landing to complete your time together.",
+  },
+  itemDescriptions: {
+    "Butter Croissant": "A classic croissant with a crisp exterior and soft, layered center.",
+    "Signature Salad 79": "Crisp mixed greens served with soy vinaigrette dressing.",
+    "Pre-Flight Omelete": "A soft omelet to fuel your day from the first bite.",
+    "English Breakfast 79er - Bread": "Sunny-side-up eggs, whole-wheat bread, smoked beef, mushrooms, and fresh salad.",
+    "The Cabin Crew's Croissant": "A buttery croissant with fried egg, potato chips, and fresh salad.",
+    "Nasi Goreng 79": "Flight 79 fried rice with fried chicken, satay lilit, and a sunny-side-up egg.",
+    "Cruising Iga Bakar Konro": "Tender grilled ribs served with fresh, aromatic green sambal.",
+    "Chicken Katsu 79er": "Panko-crusted chicken fillet served with sambal matah.",
+    "Spaghetti Carbonara": "Spaghetti in a creamy sauce with savory smoked beef.",
+    "Meat Lovers": "A selection of meats with melted cheese in every slice.",
+    "Berry Take-Off": "Fresh strawberry and blueberry blended with Yakult and ice cream.",
+    "Classic Ice Chocolate": "Iced chocolate and vanilla-scented milk topped with whipped cream.",
+    "Mango Mojito": "Refreshing soda and mint balanced with sweet mango.",
+    "Morning Glory": "Green tea, lavender, chamomile, dried lemon, and butterfly pea.",
+    "Strawberry Smoothies": "A smooth strawberry-banana blend with fresh fruit and granola.",
+    Espresso: "A concentrated coffee extraction with a direct, focused flavor.",
+    Americano: "Espresso with added water for a lighter character.",
+    Cappuccino: "Espresso and milk with soft foam, available hot or iced.",
+    "Café Latte": "Espresso blended with milk, available hot or iced.",
+    "Iced Coffee 79": "Flight 79's signature iced coffee.",
+    "Panna Cotta": "Silky Italian cream and vanilla pudding.",
+    "Creme Brulee": "Soft vanilla custard beneath a crisp caramelized sugar crust.",
+    "Choco Lava": "Warm premium molten chocolate wrapped in a soft cake.",
+    Affogato: "Premium vanilla ice cream served with a hot shot of espresso.",
+    Matchagato: "Vanilla ice cream finished with pure whisked matcha.",
+  },
+} as const;
 
 export const experienceFeatures = [
   {

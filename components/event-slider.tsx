@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 
 type EventSlide = {
   src: string;
@@ -19,6 +20,7 @@ const AUTOPLAY_DELAY = 5500;
 const SWIPE_THRESHOLD = 45;
 
 export function EventSlider({ slides }: EventSliderProps) {
+  const { copy } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -77,7 +79,7 @@ export function EventSlider({ slides }: EventSliderProps) {
       }}
       onTouchEnd={handleTouchEnd}
       aria-roledescription="carousel"
-      aria-label="Pilihan suasana untuk acara di Flight 79"
+      aria-label={copy.events.carousel}
     >
       {slides.map((slide, index) => (
         <Image
@@ -114,7 +116,7 @@ export function EventSlider({ slides }: EventSliderProps) {
             type="button"
             onClick={showPrevious}
             className="grid size-11 place-items-center border border-cream/35 bg-navy/35 text-cream backdrop-blur-sm transition-colors duration-300 hover:border-amber hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
-            aria-label="Foto acara sebelumnya"
+            aria-label={copy.events.previous}
           >
             <ChevronLeft className="size-5" aria-hidden="true" />
           </button>
@@ -122,7 +124,7 @@ export function EventSlider({ slides }: EventSliderProps) {
             type="button"
             onClick={showNext}
             className="grid size-11 place-items-center border border-cream/35 bg-navy/35 text-cream backdrop-blur-sm transition-colors duration-300 hover:border-amber hover:text-amber focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
-            aria-label="Foto acara berikutnya"
+            aria-label={copy.events.next}
           >
             <ChevronRight className="size-5" aria-hidden="true" />
           </button>
@@ -138,7 +140,7 @@ export function EventSlider({ slides }: EventSliderProps) {
             className={`h-1 transition-[width,background-color] duration-500 motion-reduce:transition-none ${
               index === activeIndex ? "w-10 bg-amber" : "w-5 bg-cream/45"
             }`}
-            aria-label={`Tampilkan foto ${index + 1}: ${slide.title}`}
+            aria-label={`${copy.events.show} ${index + 1}: ${slide.title}`}
             aria-current={index === activeIndex ? "true" : undefined}
           />
         ))}
