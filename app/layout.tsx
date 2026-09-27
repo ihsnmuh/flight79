@@ -4,12 +4,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://flight79-kbp.astral-giant-6903.chatgpt.site"),
   title: "Flight 79 | Aviation-Themed Coffee & Eatery",
-  description: "Nikmati first-class flavor di Flight 79, coffee & eatery bertema aviasi di Kota Baru Parahyangan.",
+  description: "Enjoy first-class flavor at Flight 79, an aviation-themed coffee and eatery in Kota Baru Parahyangan.",
   openGraph: {
     title: "Flight 79 | First-Class Flavor, On the Ground",
-    description: "Coffee, comfort food, dan pengalaman bersantap bertema aviasi di Kota Baru Parahyangan.",
+    description: "Coffee, comfort food, and an aviation-themed dining experience in Kota Baru Parahyangan.",
     type: "website",
-    locale: "id_ID",
+    locale: "en_US",
   },
   icons: {
     icon: "/flight79-logo.svg",
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="en">
       <body className="antialiased">{children}</body>
     </html>
   );
