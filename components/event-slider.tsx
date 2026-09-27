@@ -68,7 +68,7 @@ export function EventSlider({ slides }: EventSliderProps) {
 
   return (
     <div
-      className="group relative aspect-[4/3] min-h-[320px] overflow-hidden bg-coffee sm:min-h-[420px] lg:aspect-auto lg:min-h-full"
+      className="group relative h-80 min-w-0 overflow-hidden bg-coffee sm:h-auto sm:aspect-[4/3] sm:min-h-[420px] lg:aspect-auto lg:min-h-full"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
@@ -78,6 +78,10 @@ export function EventSlider({ slides }: EventSliderProps) {
         setIsPaused(true);
       }}
       onTouchEnd={handleTouchEnd}
+      onTouchCancel={() => {
+        touchStartX.current = null;
+        setIsPaused(false);
+      }}
       aria-roledescription="carousel"
       aria-label={copy.events.carousel}
     >
@@ -111,7 +115,7 @@ export function EventSlider({ slides }: EventSliderProps) {
           </p>
         </div>
 
-        <div className="flex shrink-0 gap-2">
+        <div className="hidden shrink-0 gap-2 sm:flex">
           <button
             type="button"
             onClick={showPrevious}
@@ -131,18 +135,23 @@ export function EventSlider({ slides }: EventSliderProps) {
         </div>
       </div>
 
-      <div className="absolute left-5 top-5 flex items-center gap-2 sm:left-7 sm:top-7">
+      <div className="absolute left-3 top-3 flex items-center sm:left-5 sm:top-5 sm:gap-2 lg:left-7 lg:top-7">
         {slides.map((slide, index) => (
           <button
             key={slide.src}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`h-1 transition-[width,background-color] duration-500 motion-reduce:transition-none ${
-              index === activeIndex ? "w-10 bg-amber" : "w-5 bg-cream/45"
-            }`}
+            className="grid size-11 place-items-center focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-amber sm:size-8"
             aria-label={`${copy.events.show} ${index + 1}: ${slide.title}`}
             aria-current={index === activeIndex ? "true" : undefined}
-          />
+          >
+            <span
+              className={`block h-1 transition-[width,background-color] duration-500 motion-reduce:transition-none ${
+                index === activeIndex ? "w-8 bg-amber sm:w-10" : "w-4 bg-cream/45 sm:w-5"
+              }`}
+              aria-hidden="true"
+            />
+          </button>
         ))}
       </div>
     </div>
