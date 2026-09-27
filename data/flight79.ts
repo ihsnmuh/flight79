@@ -1,3 +1,11 @@
+export const site = {
+  name: "Flight 79",
+  url: "https://coffee.flight79.com",
+  title: "Flight 79 | Aviation-Themed Cafe in Kota Baru Parahyangan",
+  description:
+    "Discover Flight 79, an aviation-themed cafe and restaurant in Kota Baru Parahyangan for coffee, comfort food, family dining, meetings, and special occasions.",
+} as const;
+
 export const contact = {
   phoneDisplay: "+62 851-2130-6972",
   phoneHref: "tel:+6285121306972",

@@ -1,5 +1,6 @@
 import { AnalyticsEvents } from "@/components/analytics-events";
 import { LanguageProvider } from "@/components/language-provider";
+import { LocalBusinessJsonLd } from "@/components/local-business-json-ld";
 import { SiteHeader } from "@/components/site-header";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -16,22 +17,25 @@ import { contact } from "@/data/flight79";
 
 export default function Home() {
   return (
-    <LanguageProvider>
-    <main className="min-h-screen overflow-x-hidden bg-cream text-ink">
-      <AnalyticsEvents />
-      <SiteHeader whatsappUrl={contact.whatsappUrl} />
-      <HeroSection />
-      <AboutSection />
-      <MenuSection />
-      <ExperienceSection />
-      <GallerySection />
-      <LocationSection />
-      <ReviewsSection />
-      <EventsSection />
-      <ContactSection />
-      <SiteFooter />
-      <MobileReservationCta />
-    </main>
-    </LanguageProvider>
+    <>
+      <LocalBusinessJsonLd />
+      <LanguageProvider>
+        <main className="min-h-screen overflow-x-hidden bg-cream text-ink">
+          <AnalyticsEvents />
+          <SiteHeader whatsappUrl={contact.whatsappUrl} />
+          <HeroSection />
+          <AboutSection />
+          <MenuSection />
+          <ExperienceSection />
+          <GallerySection />
+          <LocationSection />
+          <ReviewsSection />
+          <EventsSection />
+          <ContactSection />
+          <SiteFooter />
+          <MobileReservationCta />
+        </main>
+      </LanguageProvider>
+    </>
   );
 }
