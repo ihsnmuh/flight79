@@ -3,9 +3,11 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { type KeyboardEvent, useRef, useState } from "react";
-import { menuCategories, menuItems } from "@/data/flight79";
+import { menuCategories, menuEnglish, menuItems } from "@/data/flight79";
+import { useLanguage } from "@/components/language-provider";
 
 export function MenuExplorer() {
+  const { language, copy } = useLanguage();
   const [activeCategoryId, setActiveCategoryId] = useState(
     menuCategories[0].id,
   );
@@ -40,7 +42,7 @@ export function MenuExplorer() {
       <div
         className="-mx-5 flex overflow-x-auto border-y border-ink/15 px-5 sm:mx-0 sm:px-0"
         role="tablist"
-        aria-label="Kategori menu Flight 79"
+        aria-label={copy.menu.tabLabel}
       >
         {menuCategories.map((category, index) => {
           const isActive = category.id === activeCategory.id;
@@ -67,7 +69,7 @@ export function MenuExplorer() {
                 {category.number}
               </span>
               <span className="mt-2 block font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
-                {category.label}
+                {copy.menu.categoryLabels[category.id]}
               </span>
               <span
                 className={`absolute inset-x-0 bottom-0 h-0.5 origin-left bg-amber transition-transform duration-500 ${
@@ -98,7 +100,7 @@ export function MenuExplorer() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy/45 via-transparent to-transparent" />
             <p className="absolute bottom-5 left-5 border-l-2 border-amber pl-4 text-xs uppercase tracking-[.14em] text-cream sm:bottom-7 sm:left-7">
-              Category visual · {activeCategory.label}
+              {copy.menu.visual} · {copy.menu.categoryLabels[activeCategory.id]}
             </p>
           </div>
         ) : (
@@ -107,31 +109,31 @@ export function MenuExplorer() {
               {activeCategory.number}
             </span>
             <div className="relative mt-auto max-w-sm">
-              <p className="eyebrow text-amber">No photograph needed</p>
+              <p className="eyebrow text-amber">{copy.menu.noPhoto}</p>
               <p className="mt-4 font-display text-5xl font-semibold uppercase leading-none tracking-tight sm:text-6xl">
-                A sweet finish.
+                {copy.menu.sweetFinish}
               </p>
               <p className="mt-5 text-sm leading-7 text-cream/55">
-                Tidak semua pilihan memerlukan foto untuk tetap menggugah selera.
+                {copy.menu.noPhotoBody}
               </p>
             </div>
           </div>
         )}
 
         <div className="bg-cream p-6 sm:p-9 lg:p-12">
-          <p className="eyebrow text-coffee">Category {activeCategory.number}</p>
+          <p className="eyebrow text-coffee">{copy.menu.category} {activeCategory.number}</p>
           <h3 className="mt-3 font-display text-4xl font-semibold uppercase tracking-wide text-navy sm:text-5xl">
-            {activeCategory.label}
+            {copy.menu.categoryLabels[activeCategory.id]}
           </h3>
           <p className="mt-4 max-w-lg text-sm leading-7 text-ink/55">
-            {activeCategory.description}
+            {language === "en" ? menuEnglish.categoryDescriptions[activeCategory.id] : activeCategory.description}
           </p>
 
           <ul className="mt-8 border-t border-ink/15">
             {activeItems.map((item) => (
               <li
                 key={item.name}
-                className="grid gap-3 border-b border-ink/15 py-6 sm:grid-cols-[1fr_auto] sm:items-start sm:gap-8"
+                className="border-b border-ink/15 py-6"
               >
                 <div>
                   <div className="flex items-center gap-3">
@@ -141,12 +143,9 @@ export function MenuExplorer() {
                     <ArrowUpRight className="size-4 shrink-0 text-amber" aria-hidden="true" />
                   </div>
                   <p className="mt-2 text-sm leading-6 text-ink/55">
-                    {item.description}
+                    {language === "en" ? menuEnglish.itemDescriptions[item.name] : item.description}
                   </p>
                 </div>
-                <span className="text-[.65rem] font-bold uppercase tracking-[.13em] text-ink/35 sm:pt-2">
-                  Rp {item.price}K
-                </span>
               </li>
             ))}
           </ul>

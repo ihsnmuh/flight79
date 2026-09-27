@@ -3,10 +3,12 @@
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useState } from "react";
 import { reviews } from "@/data/flight79";
+import { useLanguage } from "@/components/language-provider";
 
 const VISIBLE_REVIEW_COUNT = 3;
 
 export function ReviewSlider() {
+  const { copy } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"previous" | "next" | null>(null);
   const visibleReviews = Array.from(
@@ -25,7 +27,7 @@ export function ReviewSlider() {
   };
 
   return (
-    <div aria-roledescription="carousel" aria-label="Review tamu Flight 79">
+    <div aria-roledescription="carousel" aria-label={copy.reviews.carousel}>
       <div
         key={`${activeIndex}-${direction ?? "initial"}`}
         className={`grid gap-4 sm:grid-cols-2 lg:grid-cols-3 ${
@@ -62,7 +64,7 @@ export function ReviewSlider() {
 
             <div
               className="mt-5 flex gap-1 text-amber"
-              aria-label={`${review.rating} dari 5 bintang`}
+              aria-label={`${review.rating} ${copy.reviews.stars}`}
             >
               {Array.from({ length: review.rating }, (_, starIndex) => (
                 <Star
@@ -78,7 +80,7 @@ export function ReviewSlider() {
             </blockquote>
 
             <footer className="mt-auto border-t border-ink/10 pt-4 text-[.6rem] font-bold uppercase tracking-[.13em] text-ink/30">
-              Pilihan review Google Maps
+              {copy.reviews.selected}
             </footer>
           </article>
         ))}
@@ -93,7 +95,7 @@ export function ReviewSlider() {
             type="button"
             onClick={showPrevious}
             className="grid size-10 place-items-center border border-ink/20 text-ink transition-colors duration-300 hover:border-coffee hover:text-coffee focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
-            aria-label="Review sebelumnya"
+            aria-label={copy.reviews.previous}
           >
             <ChevronLeft className="size-4" aria-hidden="true" />
           </button>
@@ -101,7 +103,7 @@ export function ReviewSlider() {
             type="button"
             onClick={showNext}
             className="grid size-10 place-items-center border border-ink/20 text-ink transition-colors duration-300 hover:border-coffee hover:text-coffee focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
-            aria-label="Review berikutnya"
+            aria-label={copy.reviews.next}
           >
             <ChevronRight className="size-4" aria-hidden="true" />
           </button>

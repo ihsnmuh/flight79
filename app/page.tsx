@@ -1,4 +1,5 @@
 import { AnalyticsEvents } from "@/components/analytics-events";
+import { LanguageProvider } from "@/components/language-provider";
 import { SiteHeader } from "@/components/site-header";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
@@ -15,6 +16,7 @@ import { contact } from "@/data/flight79";
 
 export default function Home() {
   return (
+    <LanguageProvider>
     <main className="min-h-screen overflow-x-hidden bg-cream text-ink">
       <AnalyticsEvents />
       <SiteHeader whatsappUrl={contact.whatsappUrl} />
@@ -30,5 +32,6 @@ export default function Home() {
       <SiteFooter />
       <MobileReservationCta />
     </main>
+    </LanguageProvider>
   );
 }
