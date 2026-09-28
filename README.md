@@ -77,6 +77,59 @@ pnpm lint
 
 Generated files are written to `dist/`. Do not edit that directory manually.
 
+## Docker
+
+The Docker image uses Vinext's standalone Node.js output and runs as a
+non-root user on port `3000`.
+
+Build the image locally:
+
+```bash
+docker build -t flight79:local .
+```
+
+Run it:
+
+```bash
+docker run --rm -p 3000:3000 flight79:local
+```
+
+Then open [http://localhost:3000](http://localhost:3000). The image includes a
+health check for the homepage.
+
+## CI/CD and Container Registry
+
+The workflow in `.github/workflows/container.yml` uses GitHub Actions to:
+
+1. Install dependencies and verify the production build on pull requests.
+2. Build Linux images for AMD64 and ARM64.
+3. Publish images after pushes to `main` or semantic version tags.
+
+Images are published to GitHub Container Registry:
+
+```text
+ghcr.io/ihsnmuh/flight79
+```
+
+Available tags include `latest`, `sha-<commit>`, and semantic versions such as
+`1.2.0` and `1.2` when a `v1.2.0` Git tag is pushed.
+
+New GHCR packages are private by default. A private package requires a GitHub
+token with `read:packages` on the VPS. A public package can be pulled without a
+registry login.
+
+Example VPS pull and run commands after the first image is published:
+
+```bash
+docker pull ghcr.io/ihsnmuh/flight79:latest
+docker run -d --name flight79 --restart unless-stopped -p 3000:3000 \
+  ghcr.io/ihsnmuh/flight79:latest
+```
+
+The workflow currently provides continuous delivery to GHCR. Automatic VPS
+deployment is intentionally not enabled until the server host, SSH user,
+deployment directory, reverse proxy, and secret-management approach are known.
+
 ## Project Structure
 
 ```text
@@ -155,14 +208,13 @@ Test, PageSpeed Insights, and URL Inspection.
 
 ## Deployment
 
-The current production build targets Vinext on a Cloudflare Workers-compatible
-runtime. `pnpm build` creates a Worker application and its client assets under
-`dist/`.
+The production build supports two deployment paths:
 
-This output is **not** a plain static HTML export that should be copied directly
-into an Nginx document root. For a VPS, run the built Worker-compatible server
-behind a reverse proxy, or perform a separate migration to a true static-export
-configuration.
+- Cloudflare-compatible Worker output under `dist/server/`.
+- A standalone Node.js server under `dist/standalone/` for Docker or a VPS.
+
+The Docker/VPS server should normally run behind a reverse proxy such as Nginx
+or Caddy for TLS and domain routing. This is not a plain static HTML export.
 
 Publishing to any external host requires explicit approval. A successful local
 build does not deploy the website.
