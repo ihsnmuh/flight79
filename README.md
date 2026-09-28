@@ -118,12 +118,60 @@ New GHCR packages are private by default. A private package requires a GitHub
 token with `read:packages` on the VPS. A public package can be pulled without a
 registry login.
 
-Example VPS pull and run commands after the first image is published:
+### Deploy with Docker Compose on a VPS
+
+Copy `compose.yaml` to a deployment directory on the VPS, for example
+`/opt/flight79`. The service binds to `127.0.0.1:3000` by default so it can sit
+behind an Nginx or Caddy reverse proxy without exposing the application port
+directly to the internet.
+
+If the GHCR package is public, start it directly:
 
 ```bash
-docker pull ghcr.io/ihsnmuh/flight79:latest
-docker run -d --name flight79 --restart unless-stopped -p 3000:3000 \
-  ghcr.io/ihsnmuh/flight79:latest
+cd /opt/flight79
+docker compose pull
+docker compose up -d
+docker compose ps
+```
+
+For a private package, create a classic GitHub personal access token with the
+`read:packages` scope and log in once before pulling. Do not save the token in
+the repository or in `compose.yaml`:
+
+```bash
+export CR_PAT="your-github-token"
+echo "$CR_PAT" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+unset CR_PAT
+```
+
+To deploy a newer image after changes reach `main`:
+
+```bash
+cd /opt/flight79
+docker compose pull
+docker compose up -d --remove-orphans
+docker image prune -f
+```
+
+The default image tag is `latest`. To deploy an immutable commit image instead,
+set the tag when running Compose:
+
+```bash
+FLIGHT79_TAG=sha-abcdef0 docker compose up -d
+```
+
+Set a different localhost port when port `3000` is already occupied:
+
+```bash
+FLIGHT79_PORT=3100 docker compose up -d
+```
+
+Useful operational commands:
+
+```bash
+docker compose logs -f --tail=100
+docker compose restart
+docker compose down
 ```
 
 The workflow currently provides continuous delivery to GHCR. Automatic VPS
