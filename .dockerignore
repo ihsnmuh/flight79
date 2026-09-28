@@ -1,0 +1,16 @@
+.git
+.github
+.next
+.sites-runtime
+.vinext
+.wrangler
+dist
+node_modules
+
+.DS_Store
+*.log
+*.md
+
+.env
+.env.*
+!.env.example
