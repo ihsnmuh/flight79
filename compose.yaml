@@ -1,0 +1,22 @@
+services:
+  web:
+    image: ghcr.io/ihsnmuh/flight79:${FLIGHT79_TAG:-latest}
+    pull_policy: always
+    restart: unless-stopped
+    init: true
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+    ports:
+      - "127.0.0.1:${FLIGHT79_PORT:-3000}:3000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
