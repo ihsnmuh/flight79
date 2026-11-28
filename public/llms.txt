@@ -14,6 +14,7 @@
 
 - [Flight 79 Website](https://coffee.flight79.com): Main landing page with menu highlights, gallery, events, and table reservation form.
 - [Reserve via WhatsApp](https://wa.me/6285121306972?text=Halo%20Flight%2079%2C%20saya%20ingin%20reservasi%20meja.): Direct WhatsApp link to book a table (+62 851-2130-6972).
+- [Order Online on GoFood](https://gofood.link/a/SStfYD7): Official GoFood page for online delivery orders (currently available exclusively on GoFood).
 - [Google Maps Directions](https://maps.app.goo.gl/jz6UKrGxTk31CAoE7): Route and location pin for Ruko Sasakirana 79, Kota Baru Parahyangan.
 - [Full Menu PDF](https://drive.google.com/file/d/1n2gVQrpwr0Q3eWKB6p2HI_khHOABcnaI/view?usp=drive_link): Complete Flight 79 food and beverage menu.
 - [Instagram (@flightseventyniner)](https://www.instagram.com/flightseventyniner/): Official Instagram account.
