@@ -1008,7 +1008,7 @@ export const menuCategories = [
     image: {
       src: "/menus/menu-pastery.jpeg",
       alt: "Pilihan pastry dan croissant sebagai inspirasi kategori sarapan Flight 79",
-      position: "12% 70%",
+      position: "50% 65%",
     },
   },
   {
@@ -1022,7 +1022,7 @@ export const menuCategories = [
     image: {
       src: "/menus/menu-litebites.jpg",
       alt: "Kentang goreng, spicy wing, dan salad segar sebagai ilustrasi kategori Sup, Salad & Camilan Flight 79",
-      position: "50% 50%",
+      position: "50% 58%",
     },
   },
   {
@@ -1036,7 +1036,7 @@ export const menuCategories = [
     image: {
       src: "/menus/menu-sopbuntut.jpg",
       alt: "Sop buntut dengan kuah kaldu kaya rasa sebagai inspirasi kategori Indonesian Delight Flight 79",
-      position: "66% 52%",
+      position: "50% 68%",
     },
   },
   {
@@ -1064,7 +1064,7 @@ export const menuCategories = [
     image: {
       src: "/menus/menu-oriental.jpg",
       alt: "Chicken Katsu 79er dengan sambal matah dan telur mata sapi sebagai ilustrasi kategori Oriental Menu Flight 79",
-      position: "50% 50%",
+      position: "50% 58%",
     },
   },
   {
@@ -1092,7 +1092,7 @@ export const menuCategories = [
     image: {
       src: "/menus/menu-berrytakeoff.jpg",
       alt: "Berry Take-Off sebagai visual kategori minuman segar Flight 79",
-      position: "94% 44%",
+      position: "42% 52%",
     },
   },
   {
