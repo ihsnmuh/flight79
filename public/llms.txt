@@ -1,6 +1,6 @@
 # Flight 79
 
-> Flight 79 is an aviation-themed cafe and restaurant at Ruko Sasakirana 79, Kota Baru Parahyangan, serving coffee, comfort food, Indonesian dishes, pasta, pizza, desserts, and refreshers for daily dining, meetings, family gatherings, and private celebrations.
+> Flight 79 is an aviation-themed cafe and restaurant at Ruko Sasakirana 79, Kota Baru Parahyangan, serving coffee, pastries, Indonesian dishes, pasta, pizza, steak, oriental bowls, desserts, and refreshers for daily dining, meetings, family gatherings, and private celebrations.
 
 ## Overview
 
@@ -9,10 +9,11 @@
 - Opening hours: Monday to Sunday, 08:00 to 21:00 WIB
 - Parking: Free parking
 - Reservations: Via WhatsApp at +62 851-2130-6972 or through the reservation form on https://coffee.flight79.com/#reserve
+- Online delivery: Currently available exclusively on GoFood (https://gofood.link/a/SStfYD7)
 
 ## Contact & Official Links
 
-- [Flight 79 Website](https://coffee.flight79.com): Main landing page with menu highlights, gallery, events, and table reservation form.
+- [Flight 79 Website](https://coffee.flight79.com): Main landing page with menu, gallery, events, online ordering, and table reservation form.
 - [Reserve via WhatsApp](https://wa.me/6285121306972?text=Halo%20Flight%2079%2C%20saya%20ingin%20reservasi%20meja.): Direct WhatsApp link to book a table (+62 851-2130-6972).
 - [Order Online on GoFood](https://gofood.link/a/SStfYD7): Official GoFood page for online delivery orders (currently available exclusively on GoFood).
 - [Google Maps Directions](https://maps.app.goo.gl/jz6UKrGxTk31CAoE7): Route and location pin for Ruko Sasakirana 79, Kota Baru Parahyangan.
@@ -21,49 +22,49 @@
 - [TikTok (@flightseventyniner)](https://www.tiktok.com/@flightseventyniner): Official TikTok account.
 - Email: info@flight79.com
 
-## Menu Highlights
+## Menu Overview
 
-Prices are listed in Indonesian Rupiah (IDR).
+For the latest pricing and availability, see the official Full Menu PDF or GoFood page.
 
-### Breakfast & Light
+### Breakfast & Pastry
 
-- Butter Croissant (Rp 18.000): Classic croissant with a crisp exterior and soft, layered center.
-- Signature Salad 79 (Rp 39.000): Crisp mixed greens served with soy vinaigrette dressing.
-- Pre-Flight Omelete (Rp 38.000): Soft, warm omelet made for breakfast.
-- English Breakfast 79er - Bread (Rp 55.000): Sunny-side-up eggs, whole-wheat bread, smoked beef, mushrooms, and fresh salad.
-- The Cabin Crew's Croissant (Rp 58.000): Buttery croissant with fried egg, potato chips, and fresh salad.
+- Flight Deck Breakfast: Pre-Flight Omelete, English Breakfast 79er - Bread, English Breakfast 79er Potato, The Cabin Crew's Croissant, The Aviator's Tuna, The Captain's Smoked Beef
+- Pastry: Butter Croissant, Almond Croissant, Choco Croissant, Cheese Croissant, Cookies Croissant, Kouign Amann, Cream Cheese Danish, Pain Aux Raisin, Cinnamon Roll, Pistachio Choco Roll
 
-### Main Course
+### Soup, Salad & Lite Bites
 
-- Nasi Goreng 79 (Rp 58.500): Flight 79 fried rice with fried chicken, satay lilit, and a sunny-side-up egg.
-- Cruising Iga Bakar Konro (Rp 90.000): Tender grilled ribs served with fresh, aromatic green sambal.
-- Chicken Katsu 79er (Rp 49.000): Panko-crusted chicken fillet served with sambal matah.
-- Spaghetti Carbonara (Rp 45.000): Spaghetti in a creamy sauce with savory smoked beef.
-- Meat Lovers (Rp 100.000): Selection of meats with melted cheese in every slice.
+- Soup & Salad: Chicken Cream Soup, French Onion Soup, Pumpkin Soup, Signature Salad 79, Caesar Salad, Fruits Salad
+- Lite Bites: French Fries, Cajun Potato, Onion Ring, Calamari, Mix Platter, Mix Fries, Tortillas Corn, Cireng, Tahu Lada Garam, Pisang Goreng, Pisang Mozza, Spicy Wing, Mozzarella Wing
 
-### Refreshers
+### Indonesian Delight
 
-- Berry Take-Off (Rp 40.000): Fresh strawberry and blueberry blended with Yakult and ice cream.
-- Classic Ice Chocolate (Rp 35.000): Iced chocolate and vanilla-scented milk topped with whipped cream.
-- Mango Mojito (Rp 40.000): Soda and mint balanced with sweet mango.
-- Morning Glory (Rp 25.000): Green tea, lavender, chamomile, dried lemon, and butterfly pea.
-- Strawberry Smoothies (Rp 49.000): Strawberry-banana blend with fresh fruit and granola.
+- Nasi Bakar Teri Ayam, Nasi Bakar Oncom Ayam, Nasi Ayam Bakar Komplit, Nasi Campur Bali, Ayam Betutu, Sop Iga Garang Asam, Sop Buntut, Buntut Goreng, Nasi Rawon, Nasi Gulai Kambing, Tongseng Kambing, Cruising Iga Bakar Konro, Nasi Goreng 79, Nasi Goreng Daun Jeruk, Nasi Goreng Buntut, Nasi Goreng Pete Ikan Asin
 
-### Coffee
+### Pizza, Pasta & Steak
 
-- Espresso (Rp 20.000): Rich, concentrated shot of espresso.
-- Americano (Rp 23.000): Espresso with added water for a lighter cup.
-- Cappuccino (Rp 32.000): Espresso and milk with soft foam, available hot or iced.
-- Café Latte (Rp 32.000): Espresso blended with milk, available hot or iced.
-- Iced Coffee 79 (Rp 38.000): Flight 79's house iced coffee.
+- Pizza: Meat Lovers, Beef Pepperoni, Chicken Lovers, Double Cheesy, Hot Tuna
+- Pasta & Noodles: Spaghetti Aglio Tuna, Spaghetti Carbonara, Spaghetti Bolognese, Spaghetti A la Thai, Fried Noodles, Mie Jawa
+- Steak: Tenderloin, Sirloin, Meltique Wagyu, T-Bone, Chicken Steak, Salmon (served with potato wedges, French fries, or mashed potato, and mushroom, blackpepper, or BBQ gravy)
+
+### Oriental Menu
+
+- Hainan Chicken Rice 79er, Chicken Katsu 79er, Korean Beef Rice Bowl 79er, Beef Teriyaki Rice Bowl 79er, Spicy Dory Rice Bowl 79er
+
+### Coffee Selection
+
+- Espresso, Americano, Long Black, Cappuccino, Café Latte, Magic Hot, V60 (Fullwash/Honey/Natural), Dirty Lotus Latte, Sweet Cinnamon Coffee, Pistachio Latte (Signature), Caramel Latte, Hazelnut Latte, Vanilla Latte, Iced Coffee 79 (Signature)
+
+### Beverages & Smoothies
+
+- Ice Blended Series: Berry Take-Off (Signature), Chocolate Blend (Signature), Classic Ice Chocolate, Matcha Blend, Classic Ice Matcha (Signature), Mango Horizon, Lychee Breeze (Signature)
+- Hot Series: Hot Chocolate (Signature), Hot Matcha
+- Mojito & Refreshers: Kiwi Mojito, Mango Mojito (Signature), Lychee Mojito, Strawberry Mojito, Blueberry Mojito
+- Artisan Tea: Morning Glory, Ruby Tea (Signature), Mango Mint, Sencha Mint, Iced Tea (Signature), Mineral Water
+- Smoothies: Strawberry Smoothies, Dragonfruit Smoothies (Signature)
 
 ### Dessert
 
-- Panna Cotta (Rp 37.000): Silky Italian cream and vanilla pudding.
-- Creme Brulee (Rp 38.000): Soft vanilla custard beneath a crisp caramelized sugar crust.
-- Choco Lava (Rp 37.500): Warm chocolate cake with a molten chocolate center.
-- Affogato (Rp 25.000): Vanilla ice cream topped with a hot shot of espresso.
-- Matchagato (Rp 30.000): Vanilla ice cream finished with pure whisked matcha.
+- Panna Cotta, Creme Brulee, Choco Lava, Affogato, Matchagato, Ice Cream
 
 ## Events & Gatherings
 

@@ -12,11 +12,11 @@
       "displayName": "Flight 79 Venue, Menu & Reservation Guide",
       "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://coffee.flight79.com/llms.txt",
-      "description": "Structured Markdown summary of Flight 79 in Kota Baru Parahyangan, including opening hours, address, parking, menu highlights with prices, events, and WhatsApp table reservation instructions.",
+      "description": "Structured Markdown summary of Flight 79 in Kota Baru Parahyangan, including opening hours, address, parking, full menu categories, GoFood online ordering, events, and WhatsApp table reservation instructions.",
       "representativeQueries": [
         "What are Flight 79's opening hours and address in Kota Baru Parahyangan?",
-        "Show me the menu and prices at Flight 79 cafe",
-        "How do I reserve a table or book an event at Flight 79?"
+        "Show me the food and coffee menu at Flight 79 cafe",
+        "How do I reserve a table or order online from Flight 79?"
       ],
       "tags": [
         "cafe",

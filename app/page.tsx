@@ -21,7 +21,7 @@ export default function Home() {
     <>
       <LocalBusinessJsonLd />
       <LanguageProvider>
-        <main className="min-h-screen overflow-x-hidden bg-cream text-ink">
+        <main className="min-h-screen overflow-x-clip bg-cream text-ink">
           <AnalyticsEvents />
           <SiteHeader whatsappUrl={contact.whatsappUrl} />
           <HeroSection />
