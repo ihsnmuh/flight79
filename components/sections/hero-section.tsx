@@ -37,20 +37,22 @@ export function HeroSection() {
 
       <div className="relative z-20 mx-auto flex min-h-[88svh] max-w-[1440px] flex-col justify-end px-5 pb-16 pt-28 sm:px-8 lg:min-h-[100svh] lg:px-14 lg:pb-16 lg:pt-32">
         <div className="grid items-end gap-8 lg:grid-cols-[1.15fr_.85fr] lg:gap-10">
-          <div className="animate-entrance">
-            <p className="eyebrow mb-5 text-amber">{copy.hero.eyebrow}</p>
+          <div>
+            <p className="eyebrow animate-entrance mb-5 text-amber">
+              {copy.hero.eyebrow}
+            </p>
 
-            <h1 className="font-display text-[clamp(3.6rem,9.2vw,8.4rem)] font-semibold uppercase leading-[.84] tracking-[-.035em]">
+            <h1 className="animate-entrance font-display text-[clamp(3.6rem,9.2vw,8.4rem)] font-semibold uppercase leading-[.84] tracking-[-.035em] [animation-delay:60ms]">
               {copy.hero.title1}
               <span className="block text-outline">{copy.hero.title2}</span>
               {copy.hero.title3}
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">
+            <p className="animate-entrance mt-6 max-w-xl text-base leading-relaxed text-cream/85 [animation-delay:120ms] sm:text-lg">
               {copy.hero.body}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="animate-entrance mt-8 flex flex-col gap-3 [animation-delay:180ms] sm:flex-row">
               <a
                 href={contact.whatsappUrl}
                 data-track="whatsapp_reservation"
@@ -60,7 +62,7 @@ export function HeroSection() {
               >
                 {copy.nav.reserve}
                 <ArrowDownRight
-                  className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5"
+                  className="size-4 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-y-0.5"
                   aria-hidden="true"
                 />
               </a>
@@ -70,8 +72,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right-hand First-Class Boarding Pass Telemetry Panel (solid high-contrast surface, no glass stack) */}
-          <div className="boarding-pass animate-entrance [animation-delay:160ms]">
+          {/* Right-hand First-Class Boarding Pass Telemetry Panel */}
+          <div className="boarding-pass animate-entrance-card [animation-delay:240ms]">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-cream/20 px-5 py-3.5">
               <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-amber">
                 <Plane className="size-3.5" aria-hidden="true" />

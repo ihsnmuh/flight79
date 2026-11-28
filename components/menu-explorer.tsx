@@ -80,7 +80,7 @@ export function MenuExplorer() {
                 {copy.menu.categoryLabels[category.id]}
               </span>
               <span
-                className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-amber transition-transform duration-500 ${
+                className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-amber transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${
                   isActive ? "scale-x-100" : "scale-x-0"
                 }`}
               />

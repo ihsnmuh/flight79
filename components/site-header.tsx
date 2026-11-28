@@ -37,17 +37,13 @@ export function SiteHeader({ whatsappUrl }: { whatsappUrl: string }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b text-cream backdrop-blur-md transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 border-b text-cream backdrop-blur-md transition-[background-color,border-color,box-shadow] duration-200 ease-out ${
         scrolled
           ? "border-cream/20 bg-navy/95 shadow-[0_10px_30px_rgba(4,16,27,0.38)]"
           : "border-cream/12 bg-navy/82"
       }`}
     >
-      <div
-        className={`mx-auto flex max-w-[1440px] items-center justify-between px-5 transition-[height] duration-300 sm:px-8 lg:px-14 ${
-          scrolled ? "h-[64px]" : "h-[76px]"
-        }`}
-      >
+      <div className="mx-auto flex h-[70px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14">
         <a
           href="#home"
           aria-label={copy.footer.homeLabel}
