@@ -11,6 +11,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { LocationSection } from "@/components/sections/location-section";
 import { MenuSection } from "@/components/sections/menu-section";
 import { MobileReservationCta } from "@/components/sections/mobile-reservation-cta";
+import { OrderOnlineSection } from "@/components/sections/order-online-section";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { contact } from "@/data/flight79";
@@ -26,6 +27,7 @@ export default function Home() {
           <HeroSection />
           <AboutSection />
           <MenuSection />
+          <OrderOnlineSection />
           <ExperienceSection />
           <GallerySection />
           <LocationSection />

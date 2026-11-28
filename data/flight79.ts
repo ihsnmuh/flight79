@@ -18,6 +18,7 @@ export const contact = {
     "https://drive.google.com/file/d/1n2gVQrpwr0Q3eWKB6p2HI_khHOABcnaI/view?usp=drive_link",
   whatsappUrl:
     "https://wa.me/6285121306972?text=Halo%20Flight%2079%2C%20saya%20ingin%20reservasi%20meja.",
+  gofoodUrl: "https://gofood.link/a/SStfYD7",
 };
 
 export const social = {
