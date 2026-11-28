@@ -11,15 +11,18 @@ navy, warm cream, coffee brown, aircraft silver, and amber palette.
 ## Features
 
 - Responsive landing page for mobile, tablet, and desktop
-- English and Indonesian language switcher
-- Menu explorer with multiple food and beverage categories
+- Indonesian-first experience with an English language switcher
+- Full 115-item menu explorer across 8 categories (synced from the official menu PDF, without prices), sub-category filters, and dedicated category photography
+- Online ordering section for GoFood delivery
 - Venue gallery and event image slider
 - Static customer review carousel with a Google Maps CTA
 - Google Maps location embed and arrival information
-- WhatsApp reservation form and conversion CTAs
+- WhatsApp reservation form with WebMCP declarative annotations and conversion CTAs
 - Instagram and TikTok links
-- Local-business JSON-LD for `Restaurant` and `CafeOrCoffeeShop`
+- Local-business JSON-LD (`Restaurant` and `CafeOrCoffeeShop`) with `ReserveAction` and `OrderAction`
 - Canonical, Open Graph, Twitter Card, robots, sitemap, and manifest metadata
+- AI-agent discovery via `/llms.txt` and `/.well-known/ai-catalog.json` (ARD v1.0)
+- Self-hosted Barlow Condensed and Manrope fonts via `next/font/google`
 - Reduced-motion support and keyboard-accessible interactive controls
 
 ## Technology
@@ -97,7 +100,29 @@ docker run --rm -p 3000:3000 flight79:local
 Then open [http://localhost:3000](http://localhost:3000). The image includes a
 health check for the homepage.
 
-## CI/CD and Container Registry
+## CI/CD and Deployment
+
+This repository supports two deployment workflows:
+
+### 1. Cloudflare Workers (GitHub Actions & Wrangler)
+
+The workflow in `.github/workflows/cloudflare-deploy.yml` automatically builds and deploys the `flight79` Worker on every push to `main` (and supports manual runs via `workflow_dispatch`).
+
+Required GitHub repository secrets (**Settings -> Secrets and variables -> Actions -> Secrets**):
+
+- `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare Account ID
+- `CLOUDFLARE_API_TOKEN`: A Cloudflare API token using the **Edit Cloudflare Workers** template
+
+To deploy manually from your local machine:
+
+```bash
+pnpm build
+pnpm exec wrangler deploy --config dist/server/wrangler.json --name flight79
+```
+
+To bind a custom domain (such as `coffee.flight79.com` or `flight79.ihsanmuh.com`), add it under **Cloudflare Dashboard -> Workers & Pages -> `flight79` -> Settings -> Domains & Routes -> Custom Domain**, or pass `--domains <hostname>` to `wrangler deploy`.
+
+### 2. Container Registry and VPS (Docker Compose)
 
 The workflow in `.github/workflows/container.yml` uses GitHub Actions to:
 
@@ -181,27 +206,36 @@ deployment directory, reverse proxy, and secret-management approach are known.
 ## Project Structure
 
 ```text
+.github/workflows/
+  cloudflare-deploy.yml  Auto-deploy to Cloudflare Workers on push to main
+  container.yml          Build and publish Docker image to GHCR
 app/
-  layout.tsx        Global metadata and document shell
-  page.tsx          Landing-page composition and section order
-  globals.css       Brand tokens and shared visual styles
-  manifest.ts       Web app manifest
-  robots.ts         Crawler directives
-  sitemap.ts        XML sitemap
+  layout.tsx             Global metadata, self-hosted fonts, and document shell
+  page.tsx               Landing-page composition and section order
+  globals.css            Brand tokens and shared visual styles
+  manifest.ts            Web app manifest
+  robots.ts              Crawler directives
+  sitemap.ts             XML sitemap
 components/
-  sections/         Reusable landing-page sections
-  ui/               Shared UI primitives
-  event-slider.tsx  Special Occasions carousel
-  menu-explorer.tsx Interactive menu categories
-  review-slider.tsx Customer review carousel
+  sections/              Reusable landing-page sections (including order-online-section.tsx)
+  ui/                    Shared UI primitives
+  event-slider.tsx       Special Occasions carousel
+  menu-explorer.tsx      Interactive 8-category menu board with sub-category filters
+  reservation-form.tsx   WhatsApp reservation form with WebMCP annotations
+  review-slider.tsx      Customer review carousel
 data/
-  flight79.ts       Editable site, business, menu, and media content
+  flight79.ts            Editable site, business, menu, and media content
 lib/
-  i18n.ts           English and Indonesian interface copy
+  i18n.ts                Indonesian (default) and English interface copy
 public/
-  events/           Event photography
-  menus/            Menu photography
-  flight79-*.jpg    Venue and brand photography
+  .well-known/
+    ai-catalog.json      Agentic Resource Discovery (ARD v1.0) manifest
+  llms.txt               LLM-friendly venue and menu guide
+  events/                Event photography
+  menus/                 Category menu photography
+  flight79-*.jpg         Venue and brand photography
+types/
+  webmcp.d.ts            TypeScript declarations for WebMCP form attributes
 ```
 
 ## Editing Business Content
@@ -210,18 +244,18 @@ Frequently edited business data lives in [`data/flight79.ts`](data/flight79.ts),
 including:
 
 - Production site URL and SEO description
-- Phone, email, address, opening hours, parking, and Maps URL
+- Phone, email, address, opening hours, parking, Maps URL, and GoFood URL
 - WhatsApp reservation URL
 - Instagram and TikTok profiles
-- Menu categories and menu items
+- Menu categories and menu items (without prices)
 - Gallery images
 - Reviews and event slides
 
 Avoid scattering business information through components. Update the shared
 data file so visible content, metadata, and structured data remain consistent.
 
-The default language is English. Translations used by the language switcher
-live in [`lib/i18n.ts`](lib/i18n.ts).
+The default language is Indonesian (`id`). Translations used by the language
+switcher live in [`lib/i18n.ts`](lib/i18n.ts).
 
 ## Images
 
