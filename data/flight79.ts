@@ -193,7 +193,7 @@ export const menuCategories = [
     id: "breakfast",
     number: "01",
     label: "Breakfast & Light",
-    description: "Pilihan ringan untuk mulai hari atau menemani kopi.",
+    description: "Sajian ringan untuk mengawali pagi atau menemani secangkir kopi.",
     image: {
       src: "/menus/menu-pastery.jpeg",
       alt: "Banyak pilihan pastry dan croissant sebagai inspirasi kategori breakfast Flight 79",
@@ -204,7 +204,7 @@ export const menuCategories = [
     id: "mains",
     number: "02",
     label: "Main Course",
-    description: "Makanan utama yang akrab di lidah, dimasak di dapur Flight 79.",
+    description: "Hidangan utama yang akrab di lidah, diracik segar dari dapur Flight 79.",
     image: {
       src: "/menus/menu-sopbuntut.jpg",
       alt: "Sop buntut dengan potongan daging empuk dan kuah kaldu yang kaya rasa sebagai inspirasi kategori main course Flight 79",
@@ -215,7 +215,7 @@ export const menuCategories = [
     id: "refreshers",
     number: "03",
     label: "Refreshers",
-    description: "Minuman dingin dari buah, cokelat, dan teh.",
+    description: "Minuman dingin menyegarkan dari paduan buah, cokelat, dan teh.",
     image: {
       src: "/menus/menu-berrytakeoff.jpg",
       alt: "Berry Take-Off dengan whipped cream dan buah beri sebagai visual kategori minuman segar Flight 79",
@@ -226,7 +226,7 @@ export const menuCategories = [
     id: "coffee",
     number: "04",
     label: "Coffee",
-    description: "Espresso klasik dan kopi racikan khas Flight 79, tersedia panas atau dingin.",
+    description: "Kopi espresso klasik dan racikan khas Flight 79, tersedia panas maupun dingin.",
     image: {
       src: "/menus/menu-coffee.jpg",
       alt: "Mesin espresso Flight 79 dengan secangkir kopi yang baru diseduh",
@@ -237,7 +237,7 @@ export const menuCategories = [
     id: "dessert",
     number: "05",
     label: "Dessert",
-    description: "Hidangan manis untuk menutup waktu makan.",
+    description: "Sajian manis untuk menutup waktu makan dengan sempurna.",
     image: {
       src: "/menus/menu-dessert.jpeg",
       alt: "Kue cokelat hangat dengan lelehan cokelat sebagai visual kategori pencuci mulut Flight 79",
