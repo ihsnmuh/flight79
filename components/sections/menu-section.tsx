@@ -12,7 +12,7 @@ export function MenuSection() {
   return (
     <section
       id="menu"
-      className="relative overflow-hidden border-y border-ink/15 bg-[#e8e2d7] py-16 sm:py-20 lg:py-28"
+      className="relative overflow-x-clip border-y border-ink/15 bg-[#e8e2d7] py-16 sm:py-20 lg:py-28"
     >
       <div className="section-shell">
         <Reveal>
