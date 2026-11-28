@@ -65,6 +65,7 @@ export function ReviewSlider() {
             </div>
 
             <div
+              role="img"
               className="mt-5 flex gap-1 text-coffee"
               aria-label={`${review.rating} ${copy.reviews.stars}`}
             >

@@ -342,8 +342,11 @@ export function FlightRadarCanvas({ className = "" }: { className?: string }) {
 
     resize();
     renderFrame(0);
+    let startTimer = 0;
     if (!reducedMotion) {
-      rafId = window.requestAnimationFrame(tick);
+      startTimer = window.setTimeout(() => {
+        rafId = window.requestAnimationFrame(tick);
+      }, 450);
     }
 
     const resizeObserver = new ResizeObserver(() => {
@@ -365,6 +368,7 @@ export function FlightRadarCanvas({ className = "" }: { className?: string }) {
     });
 
     return () => {
+      window.clearTimeout(startTimer);
       window.cancelAnimationFrame(rafId);
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
