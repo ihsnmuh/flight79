@@ -33,7 +33,7 @@ export function ReservationForm() {
       setSubmitted(false);
       setErrorMessage(
         language === "id"
-          ? "Lengkapi nama, nomor WhatsApp, tanggal, waktu, dan jumlah tamu terlebih dahulu."
+          ? "Masih ada kolom wajib yang kosong. Isi nama, nomor WhatsApp, tanggal, waktu, dan jumlah tamu untuk melanjutkan."
           : "Please complete your name, WhatsApp number, date, time, and guest count first.",
       );
       return;
