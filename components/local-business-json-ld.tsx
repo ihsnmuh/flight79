@@ -33,6 +33,44 @@ const localBusinessJsonLd = {
     },
   ],
   hasMenu: contact.menuUrl,
+  hasMap: contact.mapsUrl,
+  acceptsReservations: true,
+  amenityFeature: [
+    {
+      "@type": "LocationFeatureSpecification",
+      name: contact.parking,
+      value: true,
+    },
+  ],
+  potentialAction: [
+    {
+      "@type": "ReserveAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: contact.whatsappUrl,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      result: {
+        "@type": "FoodEstablishmentReservation",
+        name: "Flight 79 Table Reservation",
+      },
+    },
+    {
+      "@type": "OrderAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: contact.gofoodUrl,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      deliveryMethod: ["http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"],
+    },
+  ],
   sameAs: [social.instagramUrl, social.tiktokUrl],
 };
 

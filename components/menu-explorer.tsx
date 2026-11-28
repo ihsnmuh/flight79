@@ -1,15 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { type KeyboardEvent, useRef, useState } from "react";
-import { menuCategories, menuEnglish, menuItems } from "@/data/flight79";
 import { useLanguage } from "@/components/language-provider";
+import { SplitFlapText } from "@/components/motion/split-flap";
+import { type MenuItem, menuCategories, menuItems } from "@/data/flight79";
 
 export function MenuExplorer() {
   const { language, copy } = useLanguage();
-  const [activeCategoryId, setActiveCategoryId] = useState(
-    menuCategories[0].id,
+  const [activeCategoryId, setActiveCategoryId] = useState<
+    (typeof menuCategories)[number]["id"]
+  >(menuCategories[0].id);
+  const [activeSubCategory, setActiveSubCategory] = useState<string | null>(
+    null,
   );
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const activeCategory =
@@ -19,13 +22,37 @@ export function MenuExplorer() {
     (item) => item.categoryId === activeCategory.id,
   );
 
+  // Group items by subCategory while preserving official PDF order
+  const groupedItems: Array<{ subCategory: string; items: MenuItem[] }> = [];
+  for (const item of activeItems) {
+    const existing = groupedItems.find(
+      (group) => group.subCategory === item.subCategory,
+    );
+    if (existing) {
+      existing.items.push(item);
+    } else {
+      groupedItems.push({ subCategory: item.subCategory, items: [item] });
+    }
+  }
+  const hasMultipleSubCategories = groupedItems.length > 1;
+  const visibleGroups =
+    hasMultipleSubCategories && activeSubCategory
+      ? groupedItems.filter((group) => group.subCategory === activeSubCategory)
+      : groupedItems;
+
+  const selectCategory = (id: (typeof menuCategories)[number]["id"]) => {
+    setActiveCategoryId(id);
+    setActiveSubCategory(null);
+  };
+
   const handleTabKeyDown = (
     event: KeyboardEvent<HTMLButtonElement>,
     index: number,
   ) => {
     let nextIndex = index;
 
-    if (event.key === "ArrowRight") nextIndex = (index + 1) % menuCategories.length;
+    if (event.key === "ArrowRight")
+      nextIndex = (index + 1) % menuCategories.length;
     else if (event.key === "ArrowLeft") {
       nextIndex = (index - 1 + menuCategories.length) % menuCategories.length;
     } else if (event.key === "Home") nextIndex = 0;
@@ -33,19 +60,23 @@ export function MenuExplorer() {
     else return;
 
     event.preventDefault();
-    setActiveCategoryId(menuCategories[nextIndex].id);
+    selectCategory(menuCategories[nextIndex].id);
     tabRefs.current[nextIndex]?.focus();
   };
 
   return (
-    <div>
+    <div className="border border-ink/20 bg-cream">
+      {/* 2x4 departure-board destination matrix so all 8 categories stay visible without hidden horizontal scroll */}
       <div
-        className="-mx-5 flex overflow-x-auto border-y border-ink/15 px-5 sm:mx-0 sm:px-0"
+        className="grid grid-cols-2 border-b border-cream/20 bg-navy text-cream sm:grid-cols-4"
         role="tablist"
         aria-label={copy.menu.tabLabel}
       >
         {menuCategories.map((category, index) => {
           const isActive = category.id === activeCategory.id;
+          const itemCount = menuItems.filter(
+            (item) => item.categoryId === category.id,
+          ).length;
 
           return (
             <button
@@ -59,20 +90,32 @@ export function MenuExplorer() {
               aria-controls="menu-panel"
               aria-selected={isActive}
               tabIndex={isActive ? 0 : -1}
-              onClick={() => setActiveCategoryId(category.id)}
+              onClick={() => selectCategory(category.id)}
               onKeyDown={(event) => handleTabKeyDown(event, index)}
-              className={`relative shrink-0 px-5 py-5 text-left transition-colors duration-300 first:pl-0 sm:flex-1 sm:px-6 ${
-                isActive ? "text-navy" : "text-ink/40 hover:text-coffee"
+              className={`relative min-h-16 border-b border-r border-cream/15 px-4 py-3.5 text-left transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-amber sm:px-5 sm:py-4 ${
+                isActive
+                  ? "bg-[#0e263d] text-cream"
+                  : "text-cream/75 hover:bg-cream/[0.06] hover:text-cream"
               }`}
             >
-              <span className="block text-[.65rem] font-bold uppercase tracking-[.18em]">
-                {category.number}
+              <span className="flex items-center justify-between gap-2">
+                <span
+                  className={`text-[0.68rem] font-bold uppercase tracking-[.18em] ${
+                    isActive ? "text-amber" : "text-cream/65"
+                  }`}
+                >
+                  FL-{category.number}
+                </span>
+                <span className="text-[0.68rem] font-semibold text-cream/60">
+                  {itemCount}
+                </span>
               </span>
-              <span className="mt-2 block font-display text-xl font-semibold uppercase tracking-wide sm:text-2xl">
+              <span className="mt-1 block font-display text-lg font-semibold uppercase leading-tight tracking-wide sm:text-xl">
                 {copy.menu.categoryLabels[category.id]}
               </span>
               <span
-                className={`absolute inset-x-0 bottom-0 h-0.5 origin-left bg-amber transition-transform duration-500 ${
+                aria-hidden="true"
+                className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-amber transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${
                   isActive ? "scale-x-100" : "scale-x-0"
                 }`}
               />
@@ -81,74 +124,147 @@ export function MenuExplorer() {
         })}
       </div>
 
+      {/* Asymmetric editorial menu board: full-bleed sticky category photography + natural-flow printed menu */}
       <div
         key={activeCategory.id}
         id="menu-panel"
         role="tabpanel"
         aria-labelledby={`menu-tab-${activeCategory.id}`}
-        className="grid border-b border-ink/15 lg:grid-cols-[.92fr_1.08fr]"
+        className="grid lg:grid-cols-[.88fr_1.12fr]"
       >
-        {"image" in activeCategory ? (
-          <div className="relative min-h-[280px] overflow-hidden bg-navy sm:min-h-[380px] lg:min-h-[520px]">
+        <div className="relative bg-navy">
+          <div className="relative aspect-[4/3] w-full overflow-hidden bg-navy sm:aspect-[16/10] lg:sticky lg:top-20 lg:aspect-auto lg:h-[min(82svh,700px)] lg:min-h-[540px]">
             <Image
               src={activeCategory.image.src}
               alt={activeCategory.image.alt}
               fill
-              sizes="(min-width: 1024px) 46vw, 100vw"
-              className="object-cover animate-entrance motion-reduce:animate-none"
+              sizes="(min-width: 1024px) 44vw, 100vw"
+              className="object-cover"
               style={{ objectPosition: activeCategory.image.position }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/45 via-transparent to-transparent" />
-            <p className="absolute bottom-5 left-5 border-l-2 border-amber pl-4 text-xs uppercase tracking-[.14em] text-cream sm:bottom-7 sm:left-7">
-              {copy.menu.visual} · {copy.menu.categoryLabels[activeCategory.id]}
-            </p>
-          </div>
-        ) : (
-          <div className="relative flex min-h-[280px] overflow-hidden bg-navy p-7 text-cream sm:min-h-[380px] sm:p-10 lg:min-h-[520px]">
-            <span className="absolute -right-4 -top-12 font-display text-[14rem] font-semibold leading-none text-cream/[.05] sm:text-[20rem]">
-              {activeCategory.number}
-            </span>
-            <div className="relative mt-auto max-w-sm">
-              <p className="eyebrow text-amber">{copy.menu.noPhoto}</p>
-              <p className="mt-4 font-display text-5xl font-semibold uppercase leading-none tracking-tight sm:text-6xl">
-                {copy.menu.sweetFinish}
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/15 to-navy/25" />
+            <div className="absolute left-5 top-5 border border-cream/25 bg-navy/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-amber sm:left-6 sm:top-6">
+              <SplitFlapText text={`FL-${activeCategory.number}`} />
+            </div>
+            <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
+              <p className="text-[0.7rem] font-bold uppercase tracking-[.16em] text-amber">
+                {copy.menu.visual}
               </p>
-              <p className="mt-5 text-sm leading-7 text-cream/55">
-                {copy.menu.noPhotoBody}
+              <p className="mt-1 font-display text-2xl font-semibold uppercase tracking-wide text-cream">
+                {copy.menu.categoryLabels[activeCategory.id]}
               </p>
             </div>
           </div>
-        )}
+        </div>
 
-        <div className="bg-cream p-6 sm:p-9 lg:p-12">
-          <p className="eyebrow text-coffee">{copy.menu.category} {activeCategory.number}</p>
-          <h3 className="mt-3 font-display text-4xl font-semibold uppercase tracking-wide text-navy sm:text-5xl">
-            {copy.menu.categoryLabels[activeCategory.id]}
-          </h3>
-          <p className="mt-4 max-w-lg text-sm leading-7 text-ink/55">
-            {language === "en" ? menuEnglish.categoryDescriptions[activeCategory.id] : activeCategory.description}
+        <div className="bg-cream p-6 sm:p-9 lg:border-l lg:border-ink/15 lg:p-11">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-ink/20 pb-5">
+            <div>
+              <p className="eyebrow text-coffee">
+                {copy.menu.category} {activeCategory.number}
+              </p>
+              <h3 className="mt-2 font-display text-4xl font-semibold uppercase tracking-wide text-navy sm:text-5xl">
+                <SplitFlapText
+                  text={copy.menu.categoryLabels[activeCategory.id]}
+                />
+              </h3>
+            </div>
+            <span className="text-xs font-bold uppercase tracking-[0.14em] text-coffee">
+              {activeItems.length} ITEM
+            </span>
+          </div>
+
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-[#4a453e]">
+            {language === "en"
+              ? activeCategory.descriptionEn
+              : activeCategory.description}
           </p>
 
-          <ul className="mt-8 border-t border-ink/15">
-            {activeItems.map((item) => (
-              <li
-                key={item.name}
-                className="border-b border-ink/15 py-6"
+          {hasMultipleSubCategories ? (
+            <div
+              className="mt-6 flex flex-wrap gap-2 border-b border-ink/15 pb-5"
+              role="group"
+              aria-label={copy.menu.categoryLabels[activeCategory.id]}
+            >
+              <button
+                type="button"
+                aria-pressed={activeSubCategory === null}
+                onClick={() => setActiveSubCategory(null)}
+                className={`min-h-11 border px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy ${
+                  activeSubCategory === null
+                    ? "border-navy bg-navy text-cream"
+                    : "border-ink/20 bg-transparent text-navy hover:border-navy"
+                }`}
               >
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h4 className="font-display text-2xl font-semibold uppercase leading-tight tracking-wide text-navy sm:text-3xl">
-                      {item.name}
+                {copy.menu.allSubCategories} ({activeItems.length})
+              </button>
+              {groupedItems.map((group) => {
+                const isSelected = activeSubCategory === group.subCategory;
+
+                return (
+                  <button
+                    key={group.subCategory}
+                    type="button"
+                    aria-pressed={isSelected}
+                    onClick={() => setActiveSubCategory(group.subCategory)}
+                    className={`min-h-11 border px-3.5 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy ${
+                      isSelected
+                        ? "border-navy bg-navy text-cream"
+                        : "border-ink/20 bg-transparent text-navy hover:border-navy"
+                    }`}
+                  >
+                    {group.subCategory} ({group.items.length})
+                  </button>
+                );
+              })}
+            </div>
+          ) : null}
+
+          <div className="mt-7 space-y-9">
+            {visibleGroups.map((group) => (
+              <div key={group.subCategory}>
+                {hasMultipleSubCategories ? (
+                  <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-navy/25 pb-2">
+                    <h4 className="font-display text-2xl font-semibold uppercase tracking-wide text-navy">
+                      {group.subCategory}
                     </h4>
-                    <ArrowUpRight className="size-4 shrink-0 text-amber" aria-hidden="true" />
+                    <span className="text-xs font-semibold uppercase tracking-[0.14em] text-coffee">
+                      {group.items.length} item
+                    </span>
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-ink/55">
-                    {language === "en" ? menuEnglish.itemDescriptions[item.name] : item.description}
-                  </p>
-                </div>
-              </li>
+                ) : null}
+
+                <ul className="grid gap-x-10 gap-y-1 md:grid-cols-2">
+                  {group.items.map((item) => {
+                    const ItemHeading = hasMultipleSubCategories ? "h5" : "h4";
+
+                    return (
+                      <li
+                        key={item.name}
+                        className="border-b border-ink/15 py-4"
+                      >
+                        <div className="flex flex-wrap items-baseline justify-between gap-2">
+                          <ItemHeading className="font-display text-2xl font-semibold uppercase leading-tight tracking-wide text-navy">
+                            {item.name}
+                          </ItemHeading>
+                          {item.signature ? (
+                            <span className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-coffee">
+                              {copy.menu.signatureLabel}
+                            </span>
+                          ) : null}
+                        </div>
+                        <p className="mt-1.5 text-sm leading-6 text-[#4a453e]">
+                          {language === "en"
+                            ? item.descriptionEn
+                            : item.description}
+                        </p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

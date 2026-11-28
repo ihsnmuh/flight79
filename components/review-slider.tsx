@@ -18,7 +18,9 @@ export function ReviewSlider() {
 
   const showPrevious = () => {
     setDirection("previous");
-    setActiveIndex((current) => (current - 1 + reviews.length) % reviews.length);
+    setActiveIndex(
+      (current) => (current - 1 + reviews.length) % reviews.length,
+    );
   };
 
   const showNext = () => {
@@ -38,14 +40,14 @@ export function ReviewSlider() {
         {visibleReviews.map((review, index) => (
           <article
             key={review.author}
-            className={`flex min-h-60 flex-col border border-ink/15 bg-cream p-5 sm:p-6 ${
+            className={`flex min-h-60 flex-col border border-ink/20 bg-cream p-5 sm:p-6 ${
               index === 1 ? "hidden sm:flex" : ""
             } ${index === 2 ? "hidden lg:flex" : ""}`}
           >
             <div className="flex items-center justify-between gap-4">
               <div className="flex min-w-0 items-center gap-3">
                 <span
-                  className="grid size-9 shrink-0 place-items-center rounded-full bg-navy text-[.65rem] font-extrabold tracking-wide text-cream"
+                  className="grid size-10 shrink-0 place-items-center bg-navy text-xs font-extrabold tracking-wide text-cream"
                   aria-hidden="true"
                 >
                   {review.initials}
@@ -54,47 +56,49 @@ export function ReviewSlider() {
                   <h3 className="truncate text-sm font-bold capitalize text-ink">
                     {review.author}
                   </h3>
-                  <p className="mt-0.5 text-[.7rem] text-ink/40">{review.date}</p>
+                  <p className="mt-0.5 text-xs text-[#524d45]">{review.date}</p>
                 </div>
               </div>
-              <span className="shrink-0 text-[.6rem] font-bold uppercase tracking-[.12em] text-coffee/60">
+              <span className="shrink-0 text-xs font-bold uppercase tracking-[.12em] text-coffee">
                 Google
               </span>
             </div>
 
             <div
-              className="mt-5 flex gap-1 text-amber"
+              role="img"
+              className="mt-5 flex gap-1 text-coffee"
               aria-label={`${review.rating} ${copy.reviews.stars}`}
             >
               {Array.from({ length: review.rating }, (_, starIndex) => (
                 <Star
                   key={starIndex}
-                  className="size-3.5 fill-current"
+                  className="size-3.5 fill-amber text-amber"
                   aria-hidden="true"
                 />
               ))}
             </div>
 
-            <blockquote className="mt-4 text-sm leading-6 text-ink/65">
+            <blockquote className="mt-4 text-sm leading-6 text-ink/80">
               “{review.text}”
             </blockquote>
 
-            <footer className="mt-auto border-t border-ink/10 pt-4 text-[.6rem] font-bold uppercase tracking-[.13em] text-ink/30">
+            <footer className="mt-auto border-t border-ink/15 pt-4 text-xs font-bold uppercase tracking-[.12em] text-[#524d45]">
               {copy.reviews.selected}
             </footer>
           </article>
         ))}
       </div>
 
-      <div className="mt-5 flex items-center justify-between border-t border-ink/15 pt-5">
-        <p className="text-[.65rem] font-bold uppercase tracking-[.15em] text-ink/40">
-          {String(activeIndex + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}
+      <div className="mt-5 flex items-center justify-between border-t border-ink/20 pt-5">
+        <p className="text-xs font-bold uppercase tracking-[.15em] text-[#524d45]">
+          {String(activeIndex + 1).padStart(2, "0")} /{" "}
+          {String(reviews.length).padStart(2, "0")}
         </p>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <button
             type="button"
             onClick={showPrevious}
-            className="grid size-10 place-items-center border border-ink/20 text-ink transition-colors duration-300 hover:border-coffee hover:text-coffee focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+            className="grid size-11 place-items-center border border-ink/30 text-ink transition-colors duration-300 hover:border-coffee hover:bg-coffee hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coffee"
             aria-label={copy.reviews.previous}
           >
             <ChevronLeft className="size-4" aria-hidden="true" />
@@ -102,7 +106,7 @@ export function ReviewSlider() {
           <button
             type="button"
             onClick={showNext}
-            className="grid size-10 place-items-center border border-ink/20 text-ink transition-colors duration-300 hover:border-coffee hover:text-coffee focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber"
+            className="grid size-11 place-items-center border border-ink/30 text-ink transition-colors duration-300 hover:border-coffee hover:bg-coffee hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coffee"
             aria-label={copy.reviews.next}
           >
             <ChevronRight className="size-4" aria-hidden="true" />

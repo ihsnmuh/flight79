@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
+import { Barlow_Condensed, Manrope } from "next/font/google";
 import { site } from "@/data/flight79";
 import "./globals.css";
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-barlow-condensed",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -27,13 +42,13 @@ export const metadata: Metadata = {
     url: "/",
     siteName: site.name,
     type: "website",
-    locale: "en_US",
+    locale: "id_ID",
     images: [
       {
         url: "/flight79-hero.jpg",
-        width: 3936,
-        height: 2624,
-        alt: "Flight 79 aviation-themed cafe and restaurant in Kota Baru Parahyangan",
+        width: 1600,
+        height: 1067,
+        alt: "Flight 79, kedai kopi dan tempat makan bertema aviasi di Kota Baru Parahyangan",
       },
     ],
   },
@@ -55,7 +70,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="id"
+      className={`${barlowCondensed.variable} ${manrope.variable}`}
+    >
       <body className="antialiased">{children}</body>
     </html>
   );
