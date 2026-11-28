@@ -124,7 +124,7 @@ export function MenuExplorer() {
         })}
       </div>
 
-      {/* Asymmetric editorial menu board: full-bleed sticky category photography + natural-flow printed menu */}
+      {/* Asymmetric editorial menu board: full-bleed category photography + natural-flow printed menu */}
       <div
         key={activeCategory.id}
         id="menu-panel"
@@ -132,28 +132,26 @@ export function MenuExplorer() {
         aria-labelledby={`menu-tab-${activeCategory.id}`}
         className="grid lg:grid-cols-[.88fr_1.12fr]"
       >
-        <div className="relative bg-navy">
-          <div className="relative aspect-[4/3] w-full overflow-hidden bg-navy sm:aspect-[16/10] lg:sticky lg:top-20 lg:aspect-auto lg:h-[min(82svh,700px)] lg:min-h-[540px]">
-            <Image
-              src={activeCategory.image.src}
-              alt={activeCategory.image.alt}
-              fill
-              sizes="(min-width: 1024px) 44vw, 100vw"
-              className="object-cover"
-              style={{ objectPosition: activeCategory.image.position }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/15 to-navy/25" />
-            <div className="absolute left-5 top-5 border border-cream/25 bg-navy/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-amber sm:left-6 sm:top-6">
-              <SplitFlapText text={`FL-${activeCategory.number}`} />
-            </div>
-            <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
-              <p className="text-[0.7rem] font-bold uppercase tracking-[.16em] text-amber">
-                {copy.menu.visual}
-              </p>
-              <p className="mt-1 font-display text-2xl font-semibold uppercase tracking-wide text-cream">
-                {copy.menu.categoryLabels[activeCategory.id]}
-              </p>
-            </div>
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-navy sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[540px]">
+          <Image
+            src={activeCategory.image.src}
+            alt={activeCategory.image.alt}
+            fill
+            sizes="(min-width: 1024px) 44vw, 100vw"
+            className="object-cover"
+            style={{ objectPosition: activeCategory.image.position }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/15 to-navy/25" />
+          <div className="absolute left-5 top-5 border border-cream/25 bg-navy/90 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-amber sm:left-6 sm:top-6">
+            <SplitFlapText text={`FL-${activeCategory.number}`} />
+          </div>
+          <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
+            <p className="text-[0.7rem] font-bold uppercase tracking-[.16em] text-amber">
+              {copy.menu.visual}
+            </p>
+            <p className="mt-1 font-display text-2xl font-semibold uppercase tracking-wide text-cream">
+              {copy.menu.categoryLabels[activeCategory.id]}
+            </p>
           </div>
         </div>
 
