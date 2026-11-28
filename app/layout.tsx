@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     url: "/",
     siteName: site.name,
     type: "website",
-    locale: "en_US",
+    locale: "id_ID",
     images: [
       {
         url: "/flight79-hero.jpg",
         width: 1600,
         height: 1067,
-        alt: "Flight 79 aviation-themed cafe and restaurant in Kota Baru Parahyangan",
+        alt: "Flight 79, kedai kopi dan tempat makan bertema aviasi di Kota Baru Parahyangan",
       },
     ],
   },
@@ -71,7 +71,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${barlowCondensed.variable} ${manrope.variable}`}
     >
       <body className="antialiased">{children}</body>

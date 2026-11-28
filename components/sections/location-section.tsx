@@ -37,7 +37,7 @@ export function LocationSection() {
                 <Clock3 className="mt-1 size-5 shrink-0 text-[#f6c86b]" aria-hidden="true" />
                 <div>
                   <p className="eyebrow text-cream/85">{copy.location.hours}</p>
-                  <p className="mt-2 text-base text-cream">{contact.openingHours}</p>
+                  <p className="mt-2 text-base text-cream">{copy.location.hoursValue}</p>
                 </div>
               </div>
               <div className="border-t border-cream/20 pt-5 text-sm leading-7 text-cream/90">
@@ -45,7 +45,7 @@ export function LocationSection() {
                   <strong className="text-cream">
                     {copy.location.parking}:
                   </strong>{" "}
-                  {contact.parking}
+                  {copy.location.parkingValue}
                 </p>
               </div>
             </div>

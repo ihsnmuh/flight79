@@ -72,7 +72,7 @@ export const menuItems = [
     name: "Cruising Iga Bakar Konro",
     categoryId: "mains",
     description:
-      "Iga bakar lembut dengan sambal hijau yang segar dan aromatik.",
+      "Iga bakar empuk dengan sambal hijau yang segar dan harum.",
     price: "90",
   },
   {
@@ -123,7 +123,7 @@ export const menuItems = [
     name: "Strawberry Smoothies",
     categoryId: "refreshers",
     description:
-      "Smooth blend stroberi dan pisang dengan buah segar serta granola.",
+      "Paduan lembut stroberi dan pisang dengan buah segar dan granola.",
     price: "49",
   },
   {
@@ -141,19 +141,19 @@ export const menuItems = [
   {
     name: "Cappuccino",
     categoryId: "coffee",
-    description: "Espresso dan susu dengan foam lembut, tersedia hot atau ice.",
+    description: "Espresso dan susu dengan busa lembut, tersedia panas atau dingin.",
     price: "32",
   },
   {
     name: "Café Latte",
     categoryId: "coffee",
-    description: "Espresso berpadu dengan susu, tersedia hot atau ice.",
+    description: "Espresso berpadu dengan susu, tersedia panas atau dingin.",
     price: "32",
   },
   {
     name: "Iced Coffee 79",
     categoryId: "coffee",
-    description: "Signature iced coffee dari Flight 79.",
+    description: "Es kopi racikan khas Flight 79.",
     price: "38",
   },
   {
@@ -193,7 +193,7 @@ export const menuCategories = [
     id: "breakfast",
     number: "01",
     label: "Breakfast & Light",
-    description: "Pilihan ringan untuk membuka hari atau menemani kopi.",
+    description: "Pilihan ringan untuk mulai hari atau menemani kopi.",
     image: {
       src: "/menus/menu-pastery.jpeg",
       alt: "Banyak pilihan pastry dan croissant sebagai inspirasi kategori breakfast Flight 79",
@@ -204,7 +204,7 @@ export const menuCategories = [
     id: "mains",
     number: "02",
     label: "Main Course",
-    description: "Hidangan utama yang familiar dengan karakter Flight 79.",
+    description: "Makanan utama yang akrab di lidah, dimasak di dapur Flight 79.",
     image: {
       src: "/menus/menu-sopbuntut.jpg",
       alt: "Sop buntut dengan potongan daging empuk dan kuah kaldu yang kaya rasa sebagai inspirasi kategori main course Flight 79",
@@ -215,7 +215,7 @@ export const menuCategories = [
     id: "refreshers",
     number: "03",
     label: "Refreshers",
-    description: "Minuman dingin berbasis buah, cokelat, dan teh.",
+    description: "Minuman dingin dari buah, cokelat, dan teh.",
     image: {
       src: "/menus/menu-berrytakeoff.jpg",
       alt: "Berry Take-Off dengan whipped cream dan buah beri sebagai visual kategori minuman segar Flight 79",
@@ -226,7 +226,7 @@ export const menuCategories = [
     id: "coffee",
     number: "04",
     label: "Coffee",
-    description: "Espresso classics dan signature coffee untuk menemani setiap waktu.",
+    description: "Espresso klasik dan kopi racikan khas Flight 79, tersedia panas atau dingin.",
     image: {
       src: "/menus/menu-coffee.jpg",
       alt: "Mesin espresso Flight 79 dengan secangkir kopi yang baru diseduh",
@@ -237,7 +237,7 @@ export const menuCategories = [
     id: "dessert",
     number: "05",
     label: "Dessert",
-    description: "Hidangan penutup manis untuk melengkapi waktu makan.",
+    description: "Hidangan manis untuk menutup waktu makan.",
     image: {
       src: "/menus/menu-dessert.jpeg",
       alt: "Kue cokelat hangat dengan lelehan cokelat sebagai visual kategori pencuci mulut Flight 79",
