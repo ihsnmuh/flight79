@@ -3,7 +3,7 @@ export const site = {
   url: "https://coffee.flight79.com",
   title: "Flight 79 | Aviation-Themed Cafe in Kota Baru Parahyangan",
   description:
-    "Discover Flight 79, an aviation-themed cafe and restaurant in Kota Baru Parahyangan for coffee, comfort food, family dining, meetings, and special occasions.",
+    "Flight 79 is an aviation-themed cafe and restaurant in Kota Baru Parahyangan for coffee, comfort food, family dining, meetings, and special occasions.",
 } as const;
 
 export const contact = {
@@ -44,7 +44,7 @@ export const menuItems = [
   {
     name: "Pre-Flight Omelete",
     categoryId: "breakfast",
-    description: "Omelet telur lembut untuk membuka hari sejak suapan pertama.",
+    description: "Omelet telur lembut yang disajikan hangat untuk sarapan.",
     price: "38",
   },
   {
@@ -129,7 +129,7 @@ export const menuItems = [
   {
     name: "Espresso",
     categoryId: "coffee",
-    description: "Ekstraksi kopi pekat untuk rasa yang langsung dan fokus.",
+    description: "Shot espresso pekat dengan rasa kopi yang tegas.",
     price: "20",
   },
   {
@@ -171,13 +171,13 @@ export const menuItems = [
   {
     name: "Choco Lava",
     categoryId: "dessert",
-    description: "Lelehan cokelat premium hangat dalam balutan kue lembut.",
+    description: "Kue cokelat hangat dengan lelehan cokelat di bagian tengah.",
     price: "37.5",
   },
   {
     name: "Affogato",
     categoryId: "dessert",
-    description: "Es krim vanilla premium dengan satu shot espresso panas.",
+    description: "Es krim vanilla yang disiram satu shot espresso panas.",
     price: "25",
   },
   {
@@ -215,10 +215,10 @@ export const menuCategories = [
     id: "refreshers",
     number: "03",
     label: "Refreshers",
-    description: "Pilihan segar untuk menemani perjalanan rasa.",
+    description: "Minuman dingin berbasis buah, cokelat, dan teh.",
     image: {
       src: "/menus/menu-berrytakeoff.jpg",
-      alt: "Berry Take-Off dengan whipped cream dan buah beri sebagai inspirasi sweet landing",
+      alt: "Berry Take-Off dengan whipped cream dan buah beri sebagai visual kategori minuman segar Flight 79",
       position: "94% 44%",
     },
   },
@@ -237,10 +237,10 @@ export const menuCategories = [
     id: "dessert",
     number: "05",
     label: "Dessert",
-    description: "Sweet landing untuk menutup waktu bersama.",
+    description: "Hidangan penutup manis untuk melengkapi waktu makan.",
     image: {
       src: "/menus/menu-dessert.jpeg",
-      alt: "Lelehan cokelat premium hangat dalam balutan kue lembut. Dilengkapi dengan topping premium untuk pengalaman pencuci mulut yang tak terlupakan.",
+      alt: "Kue cokelat hangat dengan lelehan cokelat sebagai visual kategori pencuci mulut Flight 79",
       position: "50% 52%",
     },
   },
@@ -248,16 +248,16 @@ export const menuCategories = [
 
 export const menuEnglish = {
   categoryDescriptions: {
-    breakfast: "Light choices to start the day or pair with your coffee.",
-    mains: "Familiar main dishes with Flight 79 character.",
-    refreshers: "Refreshing selections to accompany your flavor journey.",
-    coffee: "Espresso classics and signature coffee for any time of day.",
-    dessert: "A sweet landing to complete your time together.",
+    breakfast: "Light plates to start the morning or pair with your coffee.",
+    mains: "Familiar main dishes prepared in the Flight 79 kitchen.",
+    refreshers: "Cold fruit, chocolate, and tea-based drinks.",
+    coffee: "Espresso classics and house coffee served hot or iced.",
+    dessert: "Sweet plates to finish your meal.",
   },
   itemDescriptions: {
     "Butter Croissant": "A classic croissant with a crisp exterior and soft, layered center.",
     "Signature Salad 79": "Crisp mixed greens served with soy vinaigrette dressing.",
-    "Pre-Flight Omelete": "A soft omelet to fuel your day from the first bite.",
+    "Pre-Flight Omelete": "A soft, warm omelet made for breakfast.",
     "English Breakfast 79er - Bread": "Sunny-side-up eggs, whole-wheat bread, smoked beef, mushrooms, and fresh salad.",
     "The Cabin Crew's Croissant": "A buttery croissant with fried egg, potato chips, and fresh salad.",
     "Nasi Goreng 79": "Flight 79 fried rice with fried chicken, satay lilit, and a sunny-side-up egg.",
@@ -270,15 +270,15 @@ export const menuEnglish = {
     "Mango Mojito": "Refreshing soda and mint balanced with sweet mango.",
     "Morning Glory": "Green tea, lavender, chamomile, dried lemon, and butterfly pea.",
     "Strawberry Smoothies": "A smooth strawberry-banana blend with fresh fruit and granola.",
-    Espresso: "A concentrated coffee extraction with a direct, focused flavor.",
-    Americano: "Espresso with added water for a lighter character.",
+    Espresso: "A rich, concentrated shot of espresso.",
+    Americano: "Espresso with added water for a lighter cup.",
     Cappuccino: "Espresso and milk with soft foam, available hot or iced.",
     "Café Latte": "Espresso blended with milk, available hot or iced.",
-    "Iced Coffee 79": "Flight 79's signature iced coffee.",
+    "Iced Coffee 79": "Flight 79's house iced coffee.",
     "Panna Cotta": "Silky Italian cream and vanilla pudding.",
     "Creme Brulee": "Soft vanilla custard beneath a crisp caramelized sugar crust.",
-    "Choco Lava": "Warm premium molten chocolate wrapped in a soft cake.",
-    Affogato: "Premium vanilla ice cream served with a hot shot of espresso.",
+    "Choco Lava": "Warm chocolate cake with a molten chocolate center.",
+    Affogato: "Vanilla ice cream topped with a hot shot of espresso.",
     Matchagato: "Vanilla ice cream finished with pure whisked matcha.",
   },
 } as const;
@@ -287,7 +287,7 @@ export const experienceFeatures = [
   {
     number: "01",
     title: "Aviation Atmosphere",
-    copy: "Detail runway, flight labels, dan nuansa lounge hadir subtil—unik untuk dinikmati, tetap hangat untuk ditinggali.",
+    copy: "Detail landasan, kode penerbangan, dan sentuhan ruang tunggu hadir secukupnya agar ruangan tetap hangat dan nyaman ditinggali.",
   },
   {
     number: "02",
