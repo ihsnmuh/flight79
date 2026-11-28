@@ -30,7 +30,8 @@ export function SplitFlapText({
         .split("")
         .map((char, index) => {
           if (char === " ") return " ";
-          const threshold = Math.floor((index / Math.max(1, target.length)) * 8) + 4;
+          const threshold =
+            Math.floor((index / Math.max(1, target.length)) * 8) + 4;
           if (step >= threshold) return char;
           return ALPHABET[(step * 7 + index * 3) % ALPHABET.length];
         })
@@ -55,7 +56,8 @@ export function SplitFlapText({
   }, [text]);
 
   return (
-    <span className={`split-flap ${className}`} aria-label={text}>
+    <span className={`split-flap ${className}`}>
+      <span className="sr-only">{text}</span>
       <span aria-hidden="true">{display}</span>
     </span>
   );

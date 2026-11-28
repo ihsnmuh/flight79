@@ -100,6 +100,8 @@ export function ReservationForm() {
         noValidate
         className="grid gap-4 sm:grid-cols-2"
         aria-label={copy.form.label}
+        toolname="reserve_table"
+        tooldescription="Prepare a table reservation message for Flight 79 at Ruko Sasakirana 79, Kota Baru Parahyangan (open daily 08:00-21:00) and open WhatsApp for the guest to confirm."
       >
         <label className="field-label">
           {copy.form.name}
@@ -108,6 +110,7 @@ export function ReservationForm() {
             required
             autoComplete="name"
             placeholder={copy.form.namePlaceholder}
+            toolparamdescription="Guest full name for the table reservation."
             className="reservation-input"
             onChange={(e) =>
               setPreview((prev) => ({ ...prev, name: e.target.value }))
@@ -122,6 +125,7 @@ export function ReservationForm() {
             inputMode="tel"
             autoComplete="tel"
             placeholder="+62..."
+            toolparamdescription="Active WhatsApp phone number including country code, for example +628123456789."
             className="reservation-input"
           />
         </label>
@@ -131,6 +135,7 @@ export function ReservationForm() {
             name="date"
             required
             type="date"
+            toolparamdescription="Preferred reservation date in YYYY-MM-DD format."
             className="reservation-input"
             onChange={(e) =>
               setPreview((prev) => ({ ...prev, date: e.target.value }))
@@ -143,6 +148,7 @@ export function ReservationForm() {
             name="time"
             required
             type="time"
+            toolparamdescription="Preferred arrival time in 24-hour HH:MM format during opening hours (08:00 to 21:00)."
             className="reservation-input"
             onChange={(e) =>
               setPreview((prev) => ({ ...prev, time: e.target.value }))
@@ -158,6 +164,7 @@ export function ReservationForm() {
             min="1"
             max="30"
             placeholder="2"
+            toolparamdescription="Number of guests in the party, from 1 to 30."
             className="reservation-input"
             onChange={(e) =>
               setPreview((prev) => ({ ...prev, guests: e.target.value }))
@@ -169,6 +176,7 @@ export function ReservationForm() {
           <Textarea
             name="request"
             placeholder={copy.form.requestPlaceholder}
+            toolparamdescription="Optional special requests such as seating area, birthday setup, or dietary notes."
             className="reservation-input min-h-24 resize-y"
           />
         </label>

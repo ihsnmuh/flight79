@@ -44,13 +44,18 @@ export function SiteHeader({ whatsappUrl }: { whatsappUrl: string }) {
       }`}
     >
       <div className="mx-auto flex h-[70px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-14">
-        <a
-          href="#home"
-          aria-label={copy.footer.homeLabel}
-          className="group flex min-h-11 items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-amber"
-        >
-          <BrandLogo className="size-[44px] text-amber transition-transform duration-300 group-hover:scale-105" />
-          <div className="hidden border-l border-cream/25 pl-3 sm:block">
+        <div className="flex items-center gap-3">
+          <a
+            href="#home"
+            aria-label={copy.footer.homeLabel}
+            className="group flex min-h-11 min-w-11 items-center focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-amber"
+          >
+            <BrandLogo className="size-[44px] text-amber transition-transform duration-300 group-hover:scale-105" />
+          </a>
+          <div
+            aria-hidden="true"
+            className="hidden border-l border-cream/25 pl-3 sm:block"
+          >
             <span className="block text-[0.65rem] font-bold uppercase tracking-[0.18em] text-amber">
               GATE 79 · KBP
             </span>
@@ -58,7 +63,7 @@ export function SiteHeader({ whatsappUrl }: { whatsappUrl: string }) {
               COFFEE &amp; EATERY
             </span>
           </div>
-        </a>
+        </div>
 
         <nav
           aria-label={copy.nav.main}

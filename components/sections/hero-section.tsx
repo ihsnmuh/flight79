@@ -42,7 +42,7 @@ export function HeroSection() {
               {copy.hero.eyebrow}
             </p>
 
-            <h1 className="animate-entrance font-display text-[clamp(3.6rem,9.2vw,8.4rem)] font-semibold uppercase leading-[.84] tracking-[-.035em] [animation-delay:60ms]">
+            <h1 className="font-display text-[clamp(3.6rem,9.2vw,8.4rem)] font-semibold uppercase leading-[.84] tracking-[-.035em]">
               {copy.hero.title1}
               <span className="block text-outline">{copy.hero.title2}</span>
               {copy.hero.title3}
